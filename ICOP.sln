@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICOP", "ICOP\ICOP.csproj", "{0965864C-EF7F-4799-AF6A-DB61503D16C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E791B0A2-6FAB-4063-B536-F46620625E7B}
+	EndGlobalSection
+EndGlobal

@@ -10,10 +10,15 @@ namespace ICOP
 {
     public partial class ModelForm : Form
     {
-        public ModelForm()
+        public string pathToProgram = "";
+        public ModelForm(string pathToProgram)
         {
             InitializeComponent();
+            this.AcceptButton = btApplyStep;
+            this.ActiveControl = tbName;
+            this.pathToProgram = pathToProgram;
         }
+
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -54,13 +59,73 @@ namespace ICOP
         Font nameFont = new Font("Microsoft YaHei UI", 10, FontStyle.Bold);
 
 
-
-
         private void Main_Load(object sender, EventArgs e)
         {
-            modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToDataStepView(modelProgram.modelSteps.Count - 1, dgwStepsProgram);
-            modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToControlView(tbName, lbPosition, cbbFunc, tbSpect, cbSkip);
-            activeStep = 0;
+            if (pathToProgram != null)
+            {
+                try
+                {
+                    FileInfo fileModel = new FileInfo(pathToProgram);
+                    Path = fileModel.DirectoryName + @"\";
+                    string modelJson = File.ReadAllText(pathToProgram);
+                    try
+                    {
+                        modelProgram = JsonSerializer.Deserialize<ModelProgram>(modelJson);
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.Message);
+                    }
+                    modelProgram.MotherFolder = Path;
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam0, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam0.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam0 = (Bitmap)bmp.Clone();
+                    }
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam1, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam1.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam1 = (Bitmap)bmp.Clone();
+                    }
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam2, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam2.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam2 = (Bitmap)bmp.Clone();
+                    }
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam3, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam3.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam3 = (Bitmap)bmp.Clone();
+                    }
+
+                    dgwStepsProgram.Rows.Clear();
+                    for (int i = 0; i < modelProgram.modelSteps.Count; i++)
+                    {
+                        modelProgram.modelSteps[i].addToDataStepView(i, dgwStepsProgram);
+                        modelProgram.modelSteps[i].loadStepImage();
+                    }
+                    dgwStepsProgram.Refresh();
+                    lbModelName.Text = modelProgram.ModelName;
+                    pbICam0.Invalidate();
+                    pbICam1.Invalidate();
+                    pbICam2.Invalidate();
+                    pbICam3.Invalidate();
+                }
+                catch (Exception) { }
+            }
+            else
+            {
+                for (int i = 0; i < modelProgram.modelSteps.Count; i++)
+                {
+                    modelProgram.modelSteps[i].addToDataStepView(i, dgwStepsProgram);
+                }
+                modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToControlView(tbName, lbPosition, cbbPBA, cbbFunc, tbSpect, cbSkip);
+                activeStep = modelProgram.modelSteps.Count - 1;
+            }
         }
 
 
@@ -68,16 +133,15 @@ namespace ICOP
         {
             saveModelDialog.Title = "Creat new model";
             saveModelDialog.ShowDialog();
+            Console.WriteLine(saveModelDialog.FileName);
         }
         public string Path;
         private void saveModelDialog_FileOk(object sender, CancelEventArgs e)
         {
             dgwStepsProgram.Rows.Clear();
-            dgwStepsProgram.Refresh();
-
             FileInfo fileModel = new FileInfo(saveModelDialog.FileName);
             lbModelName.Text = fileModel.Name;
-            
+
             Directory.CreateDirectory(fileModel.DirectoryName + @"\" + fileModel.Name + @"\" + fileModel.Name + "_Image");
             Path = fileModel.DirectoryName + @"\" + fileModel.Name + @"\";
 
@@ -86,10 +150,14 @@ namespace ICOP
             modelProgram.MotherFolder = Path;
 
             activeStep = 0;
-            modelProgram.modelSteps[activeStep].addToDataStepView(0, dgwStepsProgram);
-            modelProgram.modelSteps[activeStep].addToControlView(tbName, lbPosition, cbbFunc, tbSpect, cbSkip);
-            modelProgram.ModelName = lbModelName.Text;
 
+            for (int i = 0; i < modelProgram.modelSteps.Count; i++)
+            {
+                modelProgram.modelSteps[i].addToDataStepView(i, dgwStepsProgram);
+            }
+            modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToControlView(tbName, lbPosition, cbbPBA, cbbFunc, tbSpect, cbSkip);
+            activeStep = modelProgram.modelSteps.Count - 1;
+            modelProgram.ModelName = lbModelName.Text;
             modelProgram.Save();
             pbICam0.Invalidate();
             pbICam1.Invalidate();
@@ -112,11 +180,11 @@ namespace ICOP
                 Name = "new component " + newComponentCountString,
                 Position = Global.Positions.ICam0,
                 Func = ModelProgram.IcopFunction.CODT,
-                Spect = "0.05",
+                Spect = "0.5",
                 Skip = false,
             });
             modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToDataStepView(modelProgram.modelSteps.Count - 1, dgwStepsProgram);
-            modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToControlView(tbName, lbPosition, cbbFunc, tbSpect, cbSkip);
+            modelProgram.modelSteps[modelProgram.modelSteps.Count - 1].addToControlView(tbName, lbPosition, cbbPBA, cbbFunc, tbSpect, cbSkip);
             if (dgwStepsProgram.Rows.Count > 0)
                 dgwStepsProgram.CurrentCell = dgwStepsProgram[0, activeStep];
         }
@@ -137,16 +205,23 @@ namespace ICOP
         }
         private void btApplyStep_Click(object sender, EventArgs e)
         {
-            int step_working = activeStep;
-            modelProgram.modelSteps[activeStep].applyFromControlView(tbName, lbPosition, cbbFunc, tbSpect, cbSkip);
-            dgwStepsProgram.Rows.Clear();
-            for (int i = 0; i < modelProgram.modelSteps.Count; i++)
+            modelProgram.modelSteps[activeStep].applyFromControlView(tbName, lbPosition, cbbPBA, cbbFunc, tbSpect, cbSkip);
+            modelProgram.modelSteps[activeStep].editDataStepView(activeStep, dgwStepsProgram);
+            if (activeStep < modelProgram.modelSteps.Count - 1)
             {
-                modelProgram.modelSteps[i].addToDataStepView(i, dgwStepsProgram);
+                activeStep++;
+                dgwStepsProgram.Rows[activeStep].Selected = true;
+                if (dgwStepsProgram.Rows.Count > 0)
+                    dgwStepsProgram.CurrentCell = dgwStepsProgram[0, activeStep];
+                modelProgram.modelSteps[activeStep].addToControlView(tbName, lbPosition, cbbPBA, cbbFunc, tbSpect, cbSkip);
+                modelProgram.modelSteps[activeStep].imageSources[0].bitmap = (Bitmap)pbViewArea.Image;
+                for (int i = 0; i < modelProgram.modelSteps[activeStep].imageSources.Count; i++)
+                {
+                    modelProgram.modelSteps[activeStep].imageSources.RemoveAt(i);
+                }
+                modelProgram.modelSteps[activeStep].imageSources.Add(new ModelProgram.ModelStep.imageSource());
+                modelProgram.modelSteps[activeStep].imageSources[0].bitmap = (Bitmap)pbViewArea.Image;
             }
-            dgwStepsProgram.CurrentCell = dgwStepsProgram[0, activeStep];
-            dgwStepsProgram.Rows[activeStep].Selected = true;
-            dgwStepsProgram.Refresh();
             pbICam0.Invalidate();
             pbICam1.Invalidate();
             pbICam2.Invalidate();
@@ -159,14 +234,38 @@ namespace ICOP
         }
         private void DgwStepsProgram_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
+            this.ActiveControl = dgwStepsProgram;
             // For any other operation except, StateChanged, do nothing
             if (e.StateChanged != DataGridViewElementStates.Selected) return;
             if (e.Row.Index != activeStep)
             {
-                activeStep = e.Row.Index;
-                modelProgram.modelSteps[activeStep].addToControlView(tbName, lbPosition, cbbFunc, tbSpect, cbSkip);
-               // DisponsePB(pbViewArea);
-                pbViewArea.Image = modelProgram.modelSteps[activeStep].areaBitmap;
+                if (e.Row.Index < modelProgram.modelSteps.Count)
+                {
+                    activeStep = e.Row.Index;
+                }
+                else
+                {
+                    activeStep = modelProgram.modelSteps.Count - 1;
+                }
+                Console.WriteLine(activeStep);
+                modelProgram.modelSteps[activeStep].addToControlView(tbName, lbPosition, cbbPBA, cbbFunc, tbSpect, cbSkip);
+                tbName.Text = dgwStepsProgram[1, activeStep].Value.ToString();
+                //DisponsePB(pbViewArea);
+                for (int i = 0; i < modelProgram.modelSteps[activeStep].imageSources.Count; i++)
+                {
+                    if (modelProgram.modelSteps[activeStep].imageSources[i].bitmap != null)
+                    {
+                        try
+                        {
+                            pbViewArea.Image = modelProgram.modelSteps[activeStep].imageSources[i].bitmap;
+                            break;
+                        }
+                        catch (Exception)
+                        {
+                        }
+
+                    }
+                }
             }
         }
 
@@ -176,14 +275,21 @@ namespace ICOP
             {
                 try
                 {
-                    modelProgram.modelSteps.RemoveAt(activeStep);
-                    if (dgwStepsProgram.Rows.Count > 0)
-                        dgwStepsProgram.Rows.RemoveAt(activeStep);
-                    for (int i = activeStep; i < dgwStepsProgram.Rows.Count; i++)
+                    if (modelProgram.modelSteps[activeStep].Func != ModelProgram.IcopFunction.QRDT)
                     {
-                        dgwStepsProgram[0, i].Value = i;
+                        modelProgram.modelSteps.RemoveAt(activeStep);
+                        if (dgwStepsProgram.Rows.Count > 0)
+                            dgwStepsProgram.Rows.RemoveAt(activeStep);
+                        for (int i = activeStep; i < dgwStepsProgram.Rows.Count; i++)
+                        {
+                            dgwStepsProgram[0, i].Value = i;
+                        }
                     }
-
+                    else
+                    {
+                        IcopMessenger messenger = new IcopMessenger("Can't delete QR code detect. If no need QR, Please skip it.");
+                        messenger.ShowDialog();
+                    }
                     pbICam0.Invalidate();
                     pbICam1.Invalidate();
                     pbICam2.Invalidate();
@@ -207,7 +313,14 @@ namespace ICOP
             FileInfo fileModel = new FileInfo(openFileModel.FileName);
             Path = fileModel.DirectoryName + @"\";
             string modelJson = File.ReadAllText(openFileModel.FileName);
-            modelProgram = JsonSerializer.Deserialize<ModelProgram>(modelJson);
+            try
+            {
+                modelProgram = JsonSerializer.Deserialize<ModelProgram>(modelJson);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
             modelProgram.MotherFolder = Path;
             using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam0, System.IO.FileMode.Open))
             {
@@ -332,7 +445,8 @@ namespace ICOP
                 default:
                     break;
             }
-
+            this.ActiveControl = tbName;
+            tbName.SelectAll();
         }
         private void pbICam_Paint(object sender, PaintEventArgs e)
         {
@@ -343,9 +457,10 @@ namespace ICOP
                 case "pbICam0":
                     for (int i = 0; i < modelProgram.modelSteps.Count; i++)
                     {
-                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam0)
+                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam0 && modelProgram.modelSteps[i].Skip == false)
                         {
-                            e.Graphics.DrawRectangle(drawPen, modelProgram.modelSteps[i].ForDraw(pbICam0));
+                            RectangleF rectangleF = modelProgram.modelSteps[i].ForDraw(pbICam0);
+                            e.Graphics.DrawRectangle(drawPen, rectangleF.X, rectangleF.Y, rectangleF.Width, rectangleF.Height);
                             e.Graphics.DrawString
                                 (
                                 modelProgram.modelSteps[i].Name,
@@ -360,9 +475,10 @@ namespace ICOP
                 case "pbICam1":
                     for (int i = 0; i < modelProgram.modelSteps.Count; i++)
                     {
-                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam1)
+                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam1 && modelProgram.modelSteps[i].Skip == false)
                         {
-                            e.Graphics.DrawRectangle(drawPen, modelProgram.modelSteps[i].ForDraw(pbICam1));
+                            RectangleF rectangleF = modelProgram.modelSteps[i].ForDraw(pbICam1);
+                            e.Graphics.DrawRectangle(drawPen, rectangleF.X, rectangleF.Y, rectangleF.Width, rectangleF.Height);
                             e.Graphics.DrawString
                                 (
                                 modelProgram.modelSteps[i].Name,
@@ -377,9 +493,10 @@ namespace ICOP
                 case "pbICam2":
                     for (int i = 0; i < modelProgram.modelSteps.Count; i++)
                     {
-                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam2)
+                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam2 && modelProgram.modelSteps[i].Skip == false)
                         {
-                            e.Graphics.DrawRectangle(drawPen, modelProgram.modelSteps[i].ForDraw(pbICam2));
+                            RectangleF rectangleF = modelProgram.modelSteps[i].ForDraw(pbICam2);
+                            e.Graphics.DrawRectangle(drawPen, rectangleF.X, rectangleF.Y, rectangleF.Width, rectangleF.Height);
                             e.Graphics.DrawString
                                 (
                                 modelProgram.modelSteps[i].Name,
@@ -394,9 +511,10 @@ namespace ICOP
                 case "pbICam3":
                     for (int i = 0; i < modelProgram.modelSteps.Count; i++)
                     {
-                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam3)
+                        if (modelProgram.modelSteps[i].Position == Global.Positions.ICam3 && modelProgram.modelSteps[i].Skip == false)
                         {
-                            e.Graphics.DrawRectangle(drawPen, modelProgram.modelSteps[i].ForDraw(pbICam3));
+                            RectangleF rectangleF = modelProgram.modelSteps[i].ForDraw(pbICam3);
+                            e.Graphics.DrawRectangle(drawPen, rectangleF.X, rectangleF.Y, rectangleF.Width, rectangleF.Height);
                             e.Graphics.DrawString(modelProgram.modelSteps[i].Name,
                                 nameFont,
                                 brushName,
@@ -465,14 +583,49 @@ namespace ICOP
             }
         }
 
-        public string pathModel { get
+        public string pathModel
+        {
+            get
             {
                 return modelProgram.MotherFolder + modelProgram.ModelName + ".imdl";
-            } 
+            }
         }
         private void btUserModel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            if (modelProgram.ModelName != "ModelExample")
+                this.DialogResult = DialogResult.OK;
+            else
+            {
+                IcopMessenger messenger = new IcopMessenger("You need load model or creat new fist.");
+                messenger.ShowDialog();
+            }
+
         }
+        private void btSaveAs_Click(object sender, EventArgs e)
+        {
+            saveModelAs.ShowDialog();
+        }
+
+        private void saveModelAs_FileOk(object sender, CancelEventArgs e)
+        {
+            FileInfo fileModel = new FileInfo(saveModelAs.FileName);
+            lbModelName.Text = fileModel.Name;
+            Directory.CreateDirectory(fileModel.DirectoryName + @"\" + fileModel.Name + @"\" + fileModel.Name + "_Image");
+            Path = fileModel.DirectoryName + @"\" + fileModel.Name + @"\";
+            modelProgram.MotherFolder = Path;
+            modelProgram.ModelName = lbModelName.Text;
+            modelProgram.Save();
+            pbICam0.Invalidate();
+            pbICam1.Invalidate();
+            pbICam2.Invalidate();
+            pbICam3.Invalidate();
+        }
+
+        private void cbSkip_CheckedChanged(object sender, EventArgs e)
+        {
+            modelProgram.modelSteps[activeStep].Skip = cbSkip.Checked;
+        }
+
+
     }
 }

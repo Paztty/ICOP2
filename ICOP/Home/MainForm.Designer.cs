@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -52,17 +53,30 @@
             this.pbICam2 = new System.Windows.Forms.PictureBox();
             this.pbICam1 = new System.Windows.Forms.PictureBox();
             this.pbICam0 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgwProgram = new System.Windows.Forms.DataGridView();
             this.clNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clPBA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clFuncName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSpect = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSkip = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pbChart = new System.Windows.Forms.PictureBox();
+            this.btCallSupport = new System.Windows.Forms.Button();
+            this.btLoadNextFailStep = new System.Windows.Forms.Button();
+            this.btAddReference = new System.Windows.Forms.Button();
+            this.lbResult = new System.Windows.Forms.Label();
+            this.pbSourceImage = new System.Windows.Forms.PictureBox();
+            this.pbGetImage = new System.Windows.Forms.PictureBox();
+            this.btChangeSpect = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -81,6 +95,13 @@
             this.toolStripStatusLabel16 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel17 = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbSupport = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbCounterPass = new System.Windows.Forms.Label();
+            this.lbCounterPercent = new System.Windows.Forms.Label();
+            this.lbCounterFail = new System.Windows.Forms.Label();
+            this.lbCounterTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -94,6 +115,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbICam0)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwProgram)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSourceImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGetImage)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,8 +215,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Model";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            this.button3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button3_MouseUp);
+            this.button3.Click += new System.EventHandler(this.btModel_Click);
             // 
             // button2
             // 
@@ -228,6 +252,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Auto";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbModelName
             // 
@@ -339,21 +364,21 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 257F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 47);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.75F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1579, 731);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -365,10 +390,10 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.groupBox1.Location = new System.Drawing.Point(503, 3);
+            this.groupBox1.Location = new System.Drawing.Point(504, 3);
             this.groupBox1.Name = "groupBox1";
-            this.tableLayoutPanel3.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1073, 619);
+            this.tableLayoutPanel3.SetRowSpan(this.groupBox1, 3);
+            this.groupBox1.Size = new System.Drawing.Size(1072, 725);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Camera View";
@@ -391,7 +416,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1067, 599);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1066, 705);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // pbICam3
@@ -399,24 +424,26 @@
             this.pbICam3.BackColor = System.Drawing.Color.Transparent;
             this.pbICam3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam3.Location = new System.Drawing.Point(536, 302);
+            this.pbICam3.Location = new System.Drawing.Point(536, 355);
             this.pbICam3.Name = "pbICam3";
-            this.pbICam3.Size = new System.Drawing.Size(528, 294);
+            this.pbICam3.Size = new System.Drawing.Size(527, 347);
             this.pbICam3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam3.TabIndex = 3;
             this.pbICam3.TabStop = false;
+            this.pbICam3.Paint += new System.Windows.Forms.PaintEventHandler(this.pbICam_Paint);
             // 
             // pbICam2
             // 
             this.pbICam2.BackColor = System.Drawing.Color.Transparent;
             this.pbICam2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam2.Location = new System.Drawing.Point(3, 302);
+            this.pbICam2.Location = new System.Drawing.Point(3, 355);
             this.pbICam2.Name = "pbICam2";
-            this.pbICam2.Size = new System.Drawing.Size(527, 294);
+            this.pbICam2.Size = new System.Drawing.Size(527, 347);
             this.pbICam2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam2.TabIndex = 2;
             this.pbICam2.TabStop = false;
+            this.pbICam2.Paint += new System.Windows.Forms.PaintEventHandler(this.pbICam_Paint);
             // 
             // pbICam1
             // 
@@ -425,10 +452,11 @@
             this.pbICam1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbICam1.Location = new System.Drawing.Point(536, 3);
             this.pbICam1.Name = "pbICam1";
-            this.pbICam1.Size = new System.Drawing.Size(528, 293);
+            this.pbICam1.Size = new System.Drawing.Size(527, 346);
             this.pbICam1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam1.TabIndex = 1;
             this.pbICam1.TabStop = false;
+            this.pbICam1.Paint += new System.Windows.Forms.PaintEventHandler(this.pbICam_Paint);
             // 
             // pbICam0
             // 
@@ -437,19 +465,11 @@
             this.pbICam0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbICam0.Location = new System.Drawing.Point(3, 3);
             this.pbICam0.Name = "pbICam0";
-            this.pbICam0.Size = new System.Drawing.Size(527, 293);
+            this.pbICam0.Size = new System.Drawing.Size(527, 346);
             this.pbICam0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam0.TabIndex = 0;
             this.pbICam0.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.tableLayoutPanel3.SetColumnSpan(this.panel2, 4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 628);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1573, 100);
-            this.panel2.TabIndex = 2;
+            this.pbICam0.Paint += new System.Windows.Forms.PaintEventHandler(this.pbICam_Paint);
             // 
             // panel3
             // 
@@ -461,25 +481,28 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.tableLayoutPanel3.SetRowSpan(this.panel3, 2);
-            this.panel3.Size = new System.Drawing.Size(500, 625);
+            this.panel3.Size = new System.Drawing.Size(501, 281);
             this.panel3.TabIndex = 3;
             // 
             // dgwProgram
             // 
-            this.dgwProgram.AllowUserToOrderColumns = true;
+            this.dgwProgram.AllowUserToAddRows = false;
+            this.dgwProgram.AllowUserToDeleteRows = false;
             this.dgwProgram.AllowUserToResizeColumns = false;
+            this.dgwProgram.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgwProgram.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgwProgram.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgwProgram.BackgroundColor = System.Drawing.Color.White;
             this.dgwProgram.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgwProgram.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dgwProgram.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgwProgram.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgwProgram.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clNo,
             this.clName,
             this.clPosition,
+            this.clPBA,
             this.clFuncName,
             this.clSpect,
             this.clValue,
@@ -497,14 +520,16 @@
             this.dgwProgram.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgwProgram.Location = new System.Drawing.Point(0, 0);
             this.dgwProgram.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.dgwProgram.MultiSelect = false;
             this.dgwProgram.Name = "dgwProgram";
-            this.dgwProgram.ReadOnly = true;
             this.dgwProgram.RowHeadersVisible = false;
             this.dgwProgram.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgwProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwProgram.ShowEditingIcon = false;
-            this.dgwProgram.Size = new System.Drawing.Size(500, 625);
+            this.dgwProgram.Size = new System.Drawing.Size(501, 281);
             this.dgwProgram.TabIndex = 0;
+            this.dgwProgram.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwProgram_CellClick);
+            this.dgwProgram.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DgwStepsProgram_RowStateChanged);
             // 
             // clNo
             // 
@@ -516,36 +541,39 @@
             this.clNo.Frozen = true;
             this.clNo.HeaderText = "No.";
             this.clNo.Name = "clNo";
-            this.clNo.ReadOnly = true;
             this.clNo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clNo.Width = 45;
+            this.clNo.Width = 25;
             // 
             // clName
             // 
-            this.clName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clName.FillWeight = 102.6831F;
             this.clName.HeaderText = "Component";
             this.clName.Name = "clName";
-            this.clName.ReadOnly = true;
-            this.clName.Width = 95;
+            this.clName.Width = 70;
             // 
             // clPosition
             // 
             this.clPosition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clPosition.FillWeight = 102.6831F;
-            this.clPosition.HeaderText = "Position";
+            this.clPosition.HeaderText = "Pos";
             this.clPosition.Name = "clPosition";
-            this.clPosition.ReadOnly = true;
-            this.clPosition.Width = 57;
+            this.clPosition.Width = 50;
+            // 
+            // clPBA
+            // 
+            this.clPBA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clPBA.HeaderText = "PBA";
+            this.clPBA.Name = "clPBA";
+            this.clPBA.Width = 50;
             // 
             // clFuncName
             // 
             this.clFuncName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clFuncName.FillWeight = 102.6831F;
-            this.clFuncName.HeaderText = "Funtion";
+            this.clFuncName.HeaderText = "Func";
             this.clFuncName.Name = "clFuncName";
-            this.clFuncName.ReadOnly = true;
-            this.clFuncName.Width = 57;
+            this.clFuncName.Width = 50;
             // 
             // clSpect
             // 
@@ -553,33 +581,222 @@
             this.clSpect.FillWeight = 102.6831F;
             this.clSpect.HeaderText = "Spect";
             this.clSpect.Name = "clSpect";
-            this.clSpect.ReadOnly = true;
-            this.clSpect.Width = 57;
+            this.clSpect.Width = 55;
             // 
             // clValue
             // 
-            this.clValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clValue.FillWeight = 102.6831F;
             this.clValue.HeaderText = "Value";
             this.clValue.Name = "clValue";
-            this.clValue.ReadOnly = true;
             // 
             // clResult
             // 
-            this.clResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clResult.FillWeight = 102.6831F;
             this.clResult.HeaderText = "Result";
             this.clResult.Name = "clResult";
-            this.clResult.ReadOnly = true;
+            this.clResult.Width = 60;
             // 
             // clSkip
             // 
-            this.clSkip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clSkip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.clSkip.FillWeight = 102.6831F;
             this.clSkip.HeaderText = "Skip";
             this.clSkip.Name = "clSkip";
-            this.clSkip.ReadOnly = true;
-            this.clSkip.Width = 44;
+            this.clSkip.Width = 36;
+            // 
+            // panel4
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.panel4, 2);
+            this.panel4.Controls.Add(this.lbCounterPass);
+            this.panel4.Controls.Add(this.lbCounterPercent);
+            this.panel4.Controls.Add(this.lbCounterFail);
+            this.panel4.Controls.Add(this.lbCounterTotal);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.pbChart);
+            this.panel4.Controls.Add(this.btCallSupport);
+            this.panel4.Controls.Add(this.btLoadNextFailStep);
+            this.panel4.Controls.Add(this.btAddReference);
+            this.panel4.Controls.Add(this.lbResult);
+            this.panel4.Controls.Add(this.pbSourceImage);
+            this.panel4.Controls.Add(this.pbGetImage);
+            this.panel4.Controls.Add(this.btChangeSpect);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 284);
+            this.panel4.Name = "panel4";
+            this.tableLayoutPanel3.SetRowSpan(this.panel4, 2);
+            this.panel4.Size = new System.Drawing.Size(495, 444);
+            this.panel4.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.label7.Location = new System.Drawing.Point(271, 411);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 26);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "PERCENT";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label6.Location = new System.Drawing.Point(271, 351);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 26);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "FAIL";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.label4.Location = new System.Drawing.Point(271, 381);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 26);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "TOTAL";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pbChart
+            // 
+            this.pbChart.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbChart.BackgroundImage")));
+            this.pbChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbChart.Location = new System.Drawing.Point(3, 321);
+            this.pbChart.Name = "pbChart";
+            this.pbChart.Size = new System.Drawing.Size(262, 121);
+            this.pbChart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbChart.TabIndex = 24;
+            this.pbChart.TabStop = false;
+            // 
+            // btCallSupport
+            // 
+            this.btCallSupport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btCallSupport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btCallSupport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btCallSupport.FlatAppearance.BorderSize = 0;
+            this.btCallSupport.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btCallSupport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btCallSupport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btCallSupport.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCallSupport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btCallSupport.Location = new System.Drawing.Point(420, 255);
+            this.btCallSupport.Name = "btCallSupport";
+            this.btCallSupport.Size = new System.Drawing.Size(72, 63);
+            this.btCallSupport.TabIndex = 23;
+            this.btCallSupport.Text = "EMC";
+            this.btCallSupport.UseVisualStyleBackColor = false;
+            this.btCallSupport.Click += new System.EventHandler(this.btCallSupport_Click);
+            // 
+            // btLoadNextFailStep
+            // 
+            this.btLoadNextFailStep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btLoadNextFailStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btLoadNextFailStep.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btLoadNextFailStep.FlatAppearance.BorderSize = 0;
+            this.btLoadNextFailStep.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btLoadNextFailStep.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btLoadNextFailStep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btLoadNextFailStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLoadNextFailStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btLoadNextFailStep.Location = new System.Drawing.Point(246, 221);
+            this.btLoadNextFailStep.Name = "btLoadNextFailStep";
+            this.btLoadNextFailStep.Size = new System.Drawing.Size(246, 31);
+            this.btLoadNextFailStep.TabIndex = 21;
+            this.btLoadNextFailStep.Text = "Next Fail Item";
+            this.btLoadNextFailStep.UseVisualStyleBackColor = false;
+            this.btLoadNextFailStep.Click += new System.EventHandler(this.NextFailStep_Click);
+            // 
+            // btAddReference
+            // 
+            this.btAddReference.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btAddReference.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btAddReference.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btAddReference.FlatAppearance.BorderSize = 2;
+            this.btAddReference.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btAddReference.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btAddReference.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btAddReference.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAddReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btAddReference.Location = new System.Drawing.Point(-3, 221);
+            this.btAddReference.Name = "btAddReference";
+            this.btAddReference.Size = new System.Drawing.Size(142, 31);
+            this.btAddReference.TabIndex = 22;
+            this.btAddReference.Text = "Add Reference";
+            this.btAddReference.UseVisualStyleBackColor = false;
+            this.btAddReference.Click += new System.EventHandler(this.btAddReference_Click);
+            // 
+            // lbResult
+            // 
+            this.lbResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lbResult.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbResult.Location = new System.Drawing.Point(3, 255);
+            this.lbResult.Name = "lbResult";
+            this.lbResult.Size = new System.Drawing.Size(411, 63);
+            this.lbResult.TabIndex = 0;
+            this.lbResult.Text = "TESTING";
+            this.lbResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pbSourceImage
+            // 
+            this.pbSourceImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbSourceImage.BackgroundImage")));
+            this.pbSourceImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbSourceImage.Location = new System.Drawing.Point(0, 3);
+            this.pbSourceImage.Name = "pbSourceImage";
+            this.pbSourceImage.Size = new System.Drawing.Size(225, 214);
+            this.pbSourceImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSourceImage.TabIndex = 0;
+            this.pbSourceImage.TabStop = false;
+            // 
+            // pbGetImage
+            // 
+            this.pbGetImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbGetImage.BackgroundImage")));
+            this.pbGetImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbGetImage.Location = new System.Drawing.Point(267, 2);
+            this.pbGetImage.Name = "pbGetImage";
+            this.pbGetImage.Size = new System.Drawing.Size(225, 214);
+            this.pbGetImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbGetImage.TabIndex = 2;
+            this.pbGetImage.TabStop = false;
+            // 
+            // btChangeSpect
+            // 
+            this.btChangeSpect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btChangeSpect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btChangeSpect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btChangeSpect.FlatAppearance.BorderSize = 2;
+            this.btChangeSpect.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btChangeSpect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btChangeSpect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btChangeSpect.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btChangeSpect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btChangeSpect.Location = new System.Drawing.Point(133, 221);
+            this.btChangeSpect.Name = "btChangeSpect";
+            this.btChangeSpect.Size = new System.Drawing.Size(114, 31);
+            this.btChangeSpect.TabIndex = 18;
+            this.btChangeSpect.Text = "Change Spect";
+            this.btChangeSpect.UseVisualStyleBackColor = false;
+            this.btChangeSpect.Click += new System.EventHandler(this.btChangeSpect_Click);
+            // 
+            // label1
+            // 
+            this.label1.Image = global::ICOP.Properties.Resources.compare;
+            this.label1.Location = new System.Drawing.Point(224, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 213);
+            this.label1.TabIndex = 1;
             // 
             // statusStrip1
             // 
@@ -739,6 +956,84 @@
             this.progressBar1.TabIndex = 3;
             this.progressBar1.Value = 50;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbSupport
+            // 
+            this.lbSupport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbSupport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbSupport.Font = new System.Drawing.Font("Microsoft YaHei UI", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSupport.ForeColor = System.Drawing.Color.White;
+            this.lbSupport.Location = new System.Drawing.Point(0, 0);
+            this.lbSupport.Name = "lbSupport";
+            this.lbSupport.Size = new System.Drawing.Size(1579, 802);
+            this.lbSupport.TabIndex = 4;
+            this.lbSupport.Text = "Hỗ trợ ICOP";
+            this.lbSupport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbSupport.Click += new System.EventHandler(this.lbSupport_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
+            this.label2.Location = new System.Drawing.Point(271, 321);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 26);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "PASS";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterPass
+            // 
+            this.lbCounterPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterPass.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
+            this.lbCounterPass.Location = new System.Drawing.Point(391, 321);
+            this.lbCounterPass.Name = "lbCounterPass";
+            this.lbCounterPass.Size = new System.Drawing.Size(101, 26);
+            this.lbCounterPass.TabIndex = 35;
+            this.lbCounterPass.Text = "0";
+            this.lbCounterPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterPercent
+            // 
+            this.lbCounterPercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterPercent.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lbCounterPercent.Location = new System.Drawing.Point(391, 411);
+            this.lbCounterPercent.Name = "lbCounterPercent";
+            this.lbCounterPercent.Size = new System.Drawing.Size(101, 26);
+            this.lbCounterPercent.TabIndex = 34;
+            this.lbCounterPercent.Text = "0 %";
+            this.lbCounterPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterFail
+            // 
+            this.lbCounterFail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterFail.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterFail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbCounterFail.Location = new System.Drawing.Point(391, 351);
+            this.lbCounterFail.Name = "lbCounterFail";
+            this.lbCounterFail.Size = new System.Drawing.Size(101, 26);
+            this.lbCounterFail.TabIndex = 33;
+            this.lbCounterFail.Text = "0";
+            this.lbCounterFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterTotal
+            // 
+            this.lbCounterTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterTotal.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.lbCounterTotal.Location = new System.Drawing.Point(391, 381);
+            this.lbCounterTotal.Name = "lbCounterTotal";
+            this.lbCounterTotal.Size = new System.Drawing.Size(101, 26);
+            this.lbCounterTotal.TabIndex = 32;
+            this.lbCounterTotal.Text = "0";
+            this.lbCounterTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -749,6 +1044,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lbSupport);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -757,6 +1053,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Main_Load);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.KeyDown_Event_Preview);
             this.Resize += new System.EventHandler(this.FormMainMenu_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -774,6 +1071,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbICam0)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwProgram)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSourceImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGetImage)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -817,21 +1118,41 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridView dgwProgram;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clFuncName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clSpect;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clResult;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clSkip;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.PictureBox pbICam3;
         private System.Windows.Forms.PictureBox pbICam2;
         private System.Windows.Forms.PictureBox pbICam1;
         private System.Windows.Forms.PictureBox pbICam0;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbSourceImage;
+        private System.Windows.Forms.PictureBox pbGetImage;
+        private System.Windows.Forms.Button btChangeSpect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPBA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clFuncName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clSpect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clResult;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clSkip;
+        private System.Windows.Forms.Button btLoadNextFailStep;
+        private System.Windows.Forms.Button btAddReference;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbResult;
+        private System.Windows.Forms.Label lbSupport;
+        private System.Windows.Forms.Button btCallSupport;
+        private System.Windows.Forms.PictureBox pbChart;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbCounterPass;
+        private System.Windows.Forms.Label lbCounterPercent;
+        private System.Windows.Forms.Label lbCounterFail;
+        private System.Windows.Forms.Label lbCounterTotal;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -5,16 +5,36 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICOP", "ICOP\ICOP.csproj", "{0965864C-EF7F-4799-AF6A-DB61503D16C8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{E822DC68-8A1F-4915-B383-7DCEB4083DC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|x64.ActiveCfg = Debug|x64
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|x64.Build.0 = Debug|x64
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|x86.ActiveCfg = Debug|x86
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Debug|x86.Build.0 = Debug|x86
 		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|x64.ActiveCfg = Release|x64
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|x64.Build.0 = Release|x64
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|x86.ActiveCfg = Release|x86
+		{0965864C-EF7F-4799-AF6A-DB61503D16C8}.Release|x86.Build.0 = Release|x86
+		{E822DC68-8A1F-4915-B383-7DCEB4083DC8}.Debug|Any CPU.ActiveCfg = Debug
+		{E822DC68-8A1F-4915-B383-7DCEB4083DC8}.Debug|x64.ActiveCfg = Debug
+		{E822DC68-8A1F-4915-B383-7DCEB4083DC8}.Debug|x86.ActiveCfg = Debug
+		{E822DC68-8A1F-4915-B383-7DCEB4083DC8}.Release|Any CPU.ActiveCfg = Release
+		{E822DC68-8A1F-4915-B383-7DCEB4083DC8}.Release|x64.ActiveCfg = Release
+		{E822DC68-8A1F-4915-B383-7DCEB4083DC8}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

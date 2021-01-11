@@ -45,6 +45,7 @@
             this.clNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clPBA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clFuncName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSpect = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSkip = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -55,7 +56,10 @@
             this.pbICam1 = new System.Windows.Forms.PictureBox();
             this.pbICam0 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pbViewArea = new System.Windows.Forms.PictureBox();
+            this.btSaveAs = new System.Windows.Forms.Button();
+            this.cbbPBA = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btUserModel = new System.Windows.Forms.Button();
             this.btSaveModel = new System.Windows.Forms.Button();
             this.btApplyStep = new System.Windows.Forms.Button();
             this.btClearStep = new System.Windows.Forms.Button();
@@ -73,6 +77,9 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.btTakeShot = new System.Windows.Forms.Button();
             this.btLoadImage = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pbViewArea = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -91,7 +98,7 @@
             this.saveModelDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileModel = new System.Windows.Forms.OpenFileDialog();
             this.openImageModel = new System.Windows.Forms.OpenFileDialog();
-            this.btUserModel = new System.Windows.Forms.Button();
+            this.saveModelAs = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -105,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbICam1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbICam0)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbViewArea)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -299,9 +307,10 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.dgwStepsProgram, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.dgwStepsProgram, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 47);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -310,6 +319,8 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.75F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1401, 669);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -327,23 +338,23 @@
             this.clNo,
             this.clName,
             this.clPosition,
+            this.clPBA,
             this.clFuncName,
             this.clSpect,
             this.clSkip});
             this.tableLayoutPanel3.SetColumnSpan(this.dgwStepsProgram, 2);
             this.dgwStepsProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwStepsProgram.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgwStepsProgram.Location = new System.Drawing.Point(3, 0);
+            this.dgwStepsProgram.Location = new System.Drawing.Point(3, 260);
             this.dgwStepsProgram.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.dgwStepsProgram.MultiSelect = false;
             this.dgwStepsProgram.Name = "dgwStepsProgram";
             this.dgwStepsProgram.ReadOnly = true;
             this.dgwStepsProgram.RowHeadersVisible = false;
             this.dgwStepsProgram.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableLayoutPanel3.SetRowSpan(this.dgwStepsProgram, 2);
             this.dgwStepsProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwStepsProgram.ShowEditingIcon = false;
-            this.dgwStepsProgram.Size = new System.Drawing.Size(394, 563);
+            this.dgwStepsProgram.Size = new System.Drawing.Size(394, 303);
             this.dgwStepsProgram.TabIndex = 0;
             this.dgwStepsProgram.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgwStepsProgram_RowsAdded);
             this.dgwStepsProgram.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DgwStepsProgram_RowStateChanged);
@@ -375,6 +386,14 @@
             this.clPosition.HeaderText = "Position";
             this.clPosition.Name = "clPosition";
             this.clPosition.ReadOnly = true;
+            // 
+            // clPBA
+            // 
+            this.clPBA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clPBA.HeaderText = "PBA";
+            this.clPBA.Name = "clPBA";
+            this.clPBA.ReadOnly = true;
+            this.clPBA.Width = 55;
             // 
             // clFuncName
             // 
@@ -507,7 +526,9 @@
             // panel2
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.panel2, 4);
-            this.panel2.Controls.Add(this.pbViewArea);
+            this.panel2.Controls.Add(this.btSaveAs);
+            this.panel2.Controls.Add(this.cbbPBA);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btUserModel);
             this.panel2.Controls.Add(this.btSaveModel);
             this.panel2.Controls.Add(this.btApplyStep);
@@ -533,17 +554,73 @@
             this.panel2.Size = new System.Drawing.Size(1395, 100);
             this.panel2.TabIndex = 2;
             // 
-            // pbViewArea
+            // btSaveAs
             // 
-            this.pbViewArea.BackgroundImage = global::ICOP.Properties.Resources.LightLogo;
-            this.pbViewArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbViewArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbViewArea.Location = new System.Drawing.Point(308, 0);
-            this.pbViewArea.Name = "pbViewArea";
-            this.pbViewArea.Size = new System.Drawing.Size(100, 100);
-            this.pbViewArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbViewArea.TabIndex = 20;
-            this.pbViewArea.TabStop = false;
+            this.btSaveAs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSaveAs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btSaveAs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btSaveAs.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btSaveAs.FlatAppearance.BorderSize = 2;
+            this.btSaveAs.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btSaveAs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btSaveAs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btSaveAs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSaveAs.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSaveAs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btSaveAs.Location = new System.Drawing.Point(1281, 0);
+            this.btSaveAs.Name = "btSaveAs";
+            this.btSaveAs.Size = new System.Drawing.Size(105, 33);
+            this.btSaveAs.TabIndex = 23;
+            this.btSaveAs.Text = "Save As";
+            this.btSaveAs.UseVisualStyleBackColor = false;
+            this.btSaveAs.Click += new System.EventHandler(this.btSaveAs_Click);
+            // 
+            // cbbPBA
+            // 
+            this.cbbPBA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbPBA.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbPBA.FormattingEnabled = true;
+            this.cbbPBA.Items.AddRange(new object[] {
+            "PBA0",
+            "PBA1",
+            "PBA2",
+            "PBA3"});
+            this.cbbPBA.Location = new System.Drawing.Point(433, 31);
+            this.cbbPBA.Name = "cbbPBA";
+            this.cbbPBA.Size = new System.Drawing.Size(125, 24);
+            this.cbbPBA.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.label1.Location = new System.Drawing.Point(429, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 22);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "PBA";
+            // 
+            // btUserModel
+            // 
+            this.btUserModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btUserModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btUserModel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btUserModel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btUserModel.FlatAppearance.BorderSize = 2;
+            this.btUserModel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btUserModel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btUserModel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btUserModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btUserModel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUserModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btUserModel.Location = new System.Drawing.Point(1167, 40);
+            this.btUserModel.Name = "btUserModel";
+            this.btUserModel.Size = new System.Drawing.Size(219, 61);
+            this.btUserModel.TabIndex = 19;
+            this.btUserModel.Text = "User This Model";
+            this.btUserModel.UseVisualStyleBackColor = false;
+            this.btUserModel.Click += new System.EventHandler(this.btUserModel_Click);
             // 
             // btSaveModel
             // 
@@ -558,11 +635,11 @@
             this.btSaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSaveModel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSaveModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btSaveModel.Location = new System.Drawing.Point(1167, -2);
+            this.btSaveModel.Location = new System.Drawing.Point(1169, 0);
             this.btSaveModel.Name = "btSaveModel";
-            this.btSaveModel.Size = new System.Drawing.Size(219, 52);
+            this.btSaveModel.Size = new System.Drawing.Size(108, 33);
             this.btSaveModel.TabIndex = 18;
-            this.btSaveModel.Text = "Save current model";
+            this.btSaveModel.Text = "Save";
             this.btSaveModel.UseVisualStyleBackColor = false;
             this.btSaveModel.Click += new System.EventHandler(this.btSaveModel_Click);
             // 
@@ -579,9 +656,9 @@
             this.btApplyStep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btApplyStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApplyStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btApplyStep.Location = new System.Drawing.Point(1068, 68);
+            this.btApplyStep.Location = new System.Drawing.Point(1068, 32);
             this.btApplyStep.Name = "btApplyStep";
-            this.btApplyStep.Size = new System.Drawing.Size(93, 33);
+            this.btApplyStep.Size = new System.Drawing.Size(93, 32);
             this.btApplyStep.TabIndex = 17;
             this.btApplyStep.Text = "Apply";
             this.btApplyStep.UseVisualStyleBackColor = false;
@@ -590,17 +667,17 @@
             // btClearStep
             // 
             this.btClearStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClearStep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btClearStep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btClearStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btClearStep.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.btClearStep.FlatAppearance.BorderSize = 2;
+            this.btClearStep.FlatAppearance.BorderSize = 0;
             this.btClearStep.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
             this.btClearStep.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
             this.btClearStep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btClearStep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClearStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClearStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btClearStep.Location = new System.Drawing.Point(1068, 34);
+            this.btClearStep.Location = new System.Drawing.Point(1068, 66);
             this.btClearStep.Name = "btClearStep";
             this.btClearStep.Size = new System.Drawing.Size(93, 33);
             this.btClearStep.TabIndex = 16;
@@ -621,7 +698,7 @@
             this.btAddStep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btAddStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAddStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btAddStep.Location = new System.Drawing.Point(1068, 0);
+            this.btAddStep.Location = new System.Drawing.Point(1068, -3);
             this.btAddStep.Name = "btAddStep";
             this.btAddStep.Size = new System.Drawing.Size(93, 33);
             this.btAddStep.TabIndex = 15;
@@ -632,11 +709,12 @@
             // cbSkip
             // 
             this.cbSkip.AutoSize = true;
-            this.cbSkip.Location = new System.Drawing.Point(962, 40);
+            this.cbSkip.Location = new System.Drawing.Point(965, 34);
             this.cbSkip.Name = "cbSkip";
             this.cbSkip.Size = new System.Drawing.Size(15, 14);
             this.cbSkip.TabIndex = 14;
             this.cbSkip.UseVisualStyleBackColor = true;
+            this.cbSkip.CheckedChanged += new System.EventHandler(this.cbSkip_CheckedChanged);
             // 
             // label8
             // 
@@ -652,18 +730,18 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(769, 60);
+            this.label7.Location = new System.Drawing.Point(414, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(163, 37);
+            this.label7.Size = new System.Drawing.Size(648, 37);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Descriptions : Function spect descriptions for settinh";
+            this.label7.Text = "Descriptions : Function spect descriptions for setting";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label6.Location = new System.Drawing.Point(768, 1);
+            this.label6.Location = new System.Drawing.Point(826, 2);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 22);
             this.label6.TabIndex = 11;
@@ -671,24 +749,24 @@
             // 
             // tbSpect
             // 
-            this.tbSpect.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F);
-            this.tbSpect.Location = new System.Drawing.Point(772, 30);
+            this.tbSpect.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSpect.Location = new System.Drawing.Point(830, 33);
             this.tbSpect.Name = "tbSpect";
-            this.tbSpect.Size = new System.Drawing.Size(147, 24);
+            this.tbSpect.Size = new System.Drawing.Size(89, 21);
             this.tbSpect.TabIndex = 10;
             // 
             // cbbFunc
             // 
             this.cbbFunc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbFunc.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbFunc.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbFunc.FormattingEnabled = true;
             this.cbbFunc.Items.AddRange(new object[] {
             "Component dettect",
             "Solder dettect",
             "QR code"});
-            this.cbbFunc.Location = new System.Drawing.Point(547, 33);
+            this.cbbFunc.Location = new System.Drawing.Point(627, 31);
             this.cbbFunc.Name = "cbbFunc";
-            this.cbbFunc.Size = new System.Drawing.Size(201, 29);
+            this.cbbFunc.Size = new System.Drawing.Size(123, 24);
             this.cbbFunc.TabIndex = 9;
             // 
             // label5
@@ -696,7 +774,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label5.Location = new System.Drawing.Point(543, 1);
+            this.label5.Location = new System.Drawing.Point(623, 2);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 22);
             this.label5.TabIndex = 8;
@@ -705,11 +783,11 @@
             // lbPosition
             // 
             this.lbPosition.AutoSize = true;
-            this.lbPosition.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPosition.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.lbPosition.Location = new System.Drawing.Point(432, 33);
+            this.lbPosition.Location = new System.Drawing.Point(337, 34);
             this.lbPosition.Name = "lbPosition";
-            this.lbPosition.Size = new System.Drawing.Size(109, 28);
+            this.lbPosition.Size = new System.Drawing.Size(57, 16);
             this.lbPosition.TabIndex = 7;
             this.lbPosition.Text = "Positions";
             // 
@@ -718,7 +796,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label3.Location = new System.Drawing.Point(419, 1);
+            this.label3.Location = new System.Drawing.Point(317, 2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 22);
             this.label3.TabIndex = 6;
@@ -737,11 +815,12 @@
             // 
             // tbName
             // 
-            this.tbName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbName.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tbName.Location = new System.Drawing.Point(150, 40);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(141, 24);
+            this.tbName.Size = new System.Drawing.Size(141, 21);
             this.tbName.TabIndex = 4;
             this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
@@ -781,6 +860,43 @@
             this.btLoadImage.Text = "Load Image";
             this.btLoadImage.UseVisualStyleBackColor = true;
             this.btLoadImage.Click += new System.EventHandler(this.btLoadImage_Click);
+            // 
+            // panel3
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.panel3, 2);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.pbViewArea);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(394, 254);
+            this.panel3.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 254);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Preview";
+            // 
+            // pbViewArea
+            // 
+            this.pbViewArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbViewArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbViewArea.ErrorImage = global::ICOP.Properties.Resources.LightLogo;
+            this.pbViewArea.Image = global::ICOP.Properties.Resources.LightLogo;
+            this.pbViewArea.InitialImage = global::ICOP.Properties.Resources.LightLogo;
+            this.pbViewArea.Location = new System.Drawing.Point(0, 0);
+            this.pbViewArea.Name = "pbViewArea";
+            this.pbViewArea.Size = new System.Drawing.Size(394, 254);
+            this.pbViewArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbViewArea.TabIndex = 20;
+            this.pbViewArea.TabStop = false;
+            this.pbViewArea.WaitOnLoad = true;
             // 
             // statusStrip1
             // 
@@ -926,26 +1042,9 @@
             this.openImageModel.FileName = "openFileModel";
             this.openImageModel.FileOk += new System.ComponentModel.CancelEventHandler(this.openImageModel_FileOk);
             // 
-            // btUserModel
+            // saveModelAs
             // 
-            this.btUserModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btUserModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.btUserModel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btUserModel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.btUserModel.FlatAppearance.BorderSize = 2;
-            this.btUserModel.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
-            this.btUserModel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
-            this.btUserModel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
-            this.btUserModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btUserModel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btUserModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btUserModel.Location = new System.Drawing.Point(1167, 56);
-            this.btUserModel.Name = "btUserModel";
-            this.btUserModel.Size = new System.Drawing.Size(219, 45);
-            this.btUserModel.TabIndex = 19;
-            this.btUserModel.Text = "User This Model";
-            this.btUserModel.UseVisualStyleBackColor = false;
-            this.btUserModel.Click += new System.EventHandler(this.btUserModel_Click);
+            this.saveModelAs.FileOk += new System.ComponentModel.CancelEventHandler(this.saveModelAs_FileOk);
             // 
             // ModelForm
             // 
@@ -981,6 +1080,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbICam0)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbViewArea)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1043,16 +1143,23 @@
         private System.Windows.Forms.Button btTakeShot;
         private System.Windows.Forms.Button btLoadImage;
         private System.Windows.Forms.SaveFileDialog saveModelDialog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clFuncName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clSpect;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clSkip;
         private System.Windows.Forms.OpenFileDialog openFileModel;
         private System.Windows.Forms.PictureBox pbViewArea;
         private System.Windows.Forms.OpenFileDialog openImageModel;
         private System.Windows.Forms.Button btUserModel;
+        private System.Windows.Forms.ComboBox cbbPBA;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPBA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clFuncName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clSpect;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clSkip;
+        private System.Windows.Forms.Button btSaveAs;
+        private System.Windows.Forms.SaveFileDialog saveModelAs;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

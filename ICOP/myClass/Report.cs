@@ -1,0 +1,6 @@
+﻿namespace ICOP
+{
+    class Report
+    {
+    }
+}

@@ -99,6 +99,8 @@
             this.openFileModel = new System.Windows.Forms.OpenFileDialog();
             this.openImageModel = new System.Windows.Forms.OpenFileDialog();
             this.saveModelAs = new System.Windows.Forms.SaveFileDialog();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -526,6 +528,8 @@
             // panel2
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.panel2, 4);
+            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.btSaveAs);
             this.panel2.Controls.Add(this.cbbPBA);
             this.panel2.Controls.Add(this.label1);
@@ -567,7 +571,7 @@
             this.btSaveAs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSaveAs.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSaveAs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btSaveAs.Location = new System.Drawing.Point(1281, 0);
+            this.btSaveAs.Location = new System.Drawing.Point(1288, 0);
             this.btSaveAs.Name = "btSaveAs";
             this.btSaveAs.Size = new System.Drawing.Size(105, 33);
             this.btSaveAs.TabIndex = 23;
@@ -614,7 +618,7 @@
             this.btUserModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btUserModel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btUserModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btUserModel.Location = new System.Drawing.Point(1167, 40);
+            this.btUserModel.Location = new System.Drawing.Point(1175, 40);
             this.btUserModel.Name = "btUserModel";
             this.btUserModel.Size = new System.Drawing.Size(219, 61);
             this.btUserModel.TabIndex = 19;
@@ -635,7 +639,7 @@
             this.btSaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSaveModel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSaveModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btSaveModel.Location = new System.Drawing.Point(1169, 0);
+            this.btSaveModel.Location = new System.Drawing.Point(1176, 0);
             this.btSaveModel.Name = "btSaveModel";
             this.btSaveModel.Size = new System.Drawing.Size(108, 33);
             this.btSaveModel.TabIndex = 18;
@@ -818,7 +822,7 @@
             this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbName.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbName.Location = new System.Drawing.Point(150, 40);
+            this.tbName.Location = new System.Drawing.Point(150, 30);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(141, 21);
             this.tbName.TabIndex = 4;
@@ -1046,6 +1050,32 @@
             // 
             this.saveModelAs.FileOk += new System.ComponentModel.CancelEventHandler(this.saveModelAs_FileOk);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "PBA0",
+            "PBA1",
+            "PBA2",
+            "PBA3"});
+            this.comboBox1.Location = new System.Drawing.Point(199, 68);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(141, 24);
+            this.comboBox1.TabIndex = 25;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.label9.Location = new System.Drawing.Point(149, 68);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 22);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "PBA";
+            // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1160,6 +1190,8 @@
         private System.Windows.Forms.SaveFileDialog saveModelAs;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label9;
     }
 }
 

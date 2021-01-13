@@ -17,8 +17,6 @@ namespace ICOP
             InitializeComponent();
         }
 
-
-
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -90,13 +88,30 @@ namespace ICOP
 
 
         Statistical Statistical = new Statistical();
+        
+        public User.Account OP_Acc;
+        public User.Account TE_Acc;
+        public User.Account MT_Acc;
 
+        public int CharCircle = 0;
         #endregion
 
         public void messengerIcop(string messenger)
         {
             IcopMessenger icopMessenger = new IcopMessenger(messenger);
             icopMessenger.ShowDialog();
+        }
+
+        public User.ICopPermision Login()
+        {
+            User.ICopPermision permision = User.ICopPermision.None;
+            IcopLogin icopLogin = new IcopLogin();
+            icopLogin.ShowDialog();
+            if (icopLogin.DialogResult == DialogResult.OK)
+            {
+                permision = icopLogin.permision;
+            }
+                return permision;
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -111,71 +126,97 @@ namespace ICOP
             if (!Directory.Exists(Global.ICOP_setting_path)) Directory.CreateDirectory(Global.ICOP_setting_path);
             if (!Directory.Exists(Global.ICOP_Statitic_path)) Directory.CreateDirectory(Global.ICOP_Statitic_path);
 
+            Global.DailyFolerCreat();
+
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "cldys.ic"))
+            {
+                Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+                string userAdded = File.ReadAllText(System.AppDomain.CurrentDomain.BaseDirectory + "cldys.ic");
+                Global.users = JsonSerializer.Deserialize<User>(userAdded);
+            }
+            else
+            {
+                Global.users = new User();
+                Global.users.update_change();
+            }
+
             // encread folder
 
             // check statitis file
-            string statisticJson = File.ReadAllText(Global.ICOP_Statitic_path + Statistical.StatisticalFileName);
-            try
+            if (File.Exists(Global.ICOP_Statitic_path + Statistical.StatisticalFileName))
             {
-                Statistical = JsonSerializer.Deserialize<Statistical>(statisticJson);
-                Statistical.Statistical_Init_Counter(lbCounterFail, lbCounterPass, lbCounterTotal, lbCounterPercent);
+                string statisticJson = File.ReadAllText(Global.ICOP_Statitic_path + Statistical.StatisticalFileName);
+                try
+                {
+                    Statistical = JsonSerializer.Deserialize<Statistical>(statisticJson);
+                    Statistical.Statistical_Init_Counter(lbCounterFail, lbCounterPass, lbCounterTotal, lbCounterPercent);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
             }
-            catch (Exception err)
+            else
             {
-                MessageBox.Show(err.Message);
+                Statistical.Statistical_Save();
             }
 
             startingForm.Hide();
             lbSupport.Hide();
+            timerUpdateChar.Start();
+            pbChart.BackgroundImage = null;
         }
         private void btModel_Click(object sender, EventArgs e)
         {
-            ModelForm modelForm = new ModelForm(modelProgram.MotherFolder + modelProgram.ModelName + ".imdl");
-            if (modelForm.ShowDialog() == DialogResult.OK)
+            if (Login() >= User.ICopPermision.TE)
             {
-                string modelJson = File.ReadAllText(modelForm.pathModel);
-                modelProgram = JsonSerializer.Deserialize<ModelProgram>(modelJson);
-                lbModelName.Text = modelProgram.ModelName;
-                using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam0, System.IO.FileMode.Open))
+                ModelForm modelForm = new ModelForm(modelProgram.MotherFolder + modelProgram.ModelName + ".imdl");
+                if (modelForm.ShowDialog() == DialogResult.OK)
                 {
-                    var bmp = new Bitmap(fs);
-                    pbICam0.Image = (Bitmap)bmp.Clone();
-                    modelProgram.ModelImageCam0 = (Bitmap)bmp.Clone();
-                }
-                using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam1, System.IO.FileMode.Open))
-                {
-                    var bmp = new Bitmap(fs);
-                    pbICam1.Image = (Bitmap)bmp.Clone();
-                    modelProgram.ModelImageCam1 = (Bitmap)bmp.Clone();
-                }
-                using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam2, System.IO.FileMode.Open))
-                {
-                    var bmp = new Bitmap(fs);
-                    pbICam2.Image = (Bitmap)bmp.Clone();
-                    modelProgram.ModelImageCam2 = (Bitmap)bmp.Clone();
-                }
-                using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam3, System.IO.FileMode.Open))
-                {
-                    var bmp = new Bitmap(fs);
-                    pbICam3.Image = (Bitmap)bmp.Clone();
-                    modelProgram.ModelImageCam3 = (Bitmap)bmp.Clone();
-                }
+                    string modelJson = File.ReadAllText(modelForm.pathModel);
+                    modelProgram = JsonSerializer.Deserialize<ModelProgram>(modelJson);
+                    lbModelName.Text = modelProgram.ModelName;
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam0, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam0.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam0 = (Bitmap)bmp.Clone();
+                    }
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam1, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam1.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam1 = (Bitmap)bmp.Clone();
+                    }
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam2, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam2.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam2 = (Bitmap)bmp.Clone();
+                    }
+                    using (var fs = new System.IO.FileStream(modelProgram.ModelImagePathCam3, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        pbICam3.Image = (Bitmap)bmp.Clone();
+                        modelProgram.ModelImageCam3 = (Bitmap)bmp.Clone();
+                    }
 
-                dgwProgram.Rows.Clear();
-                for (int i = 0; i < modelProgram.modelSteps.Count; i++)
-                {
+                    dgwProgram.Rows.Clear();
+                    for (int i = 0; i < modelProgram.modelSteps.Count; i++)
+                    {
 
-                    modelProgram.modelSteps[i].addToDataView(i, dgwProgram);
-                    modelProgram.modelSteps[i].loadStepImage();
+                        modelProgram.modelSteps[i].addToDataView(i, dgwProgram);
+                        modelProgram.modelSteps[i].loadStepImage();
+                    }
+                    dgwProgram.Refresh();
+                    lbModelName.Text = modelProgram.ModelName;
+
+                    pbICam0.Invalidate();
+                    pbICam1.Invalidate();
+                    pbICam2.Invalidate();
+                    pbICam3.Invalidate();
+                    modelProgram.loaded = true;
                 }
-                dgwProgram.Refresh();
-                lbModelName.Text = modelProgram.ModelName;
-
-                pbICam0.Invalidate();
-                pbICam1.Invalidate();
-                pbICam2.Invalidate();
-                pbICam3.Invalidate();
-                modelProgram.loaded = true;
             }
         }
 
@@ -279,11 +320,13 @@ namespace ICOP
     
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Stop();
+            //timer1.Stop();
             lbResult.Text = "TESTTING";
             lbResult.BackColor = Color.Blue;
             RunTest();
             lbResult.Text = modelProgram.result;
+            CharCircle = 0;
+            timerUpdateChar.Start();
             if (modelProgram.result == Global.ICOP_tester_NG)
             {
                 lbResult.BackColor = Color.Red;
@@ -295,7 +338,6 @@ namespace ICOP
                 timer1.Interval = 3000;
                 timer1.Start();
             }
-
         }
 
         public void RunTest()
@@ -560,49 +602,20 @@ namespace ICOP
             lbSupport.BringToFront();
             lbSupport.Show();
         }
-    }
 
-    public static class Global
-    {
-
-        public const string ICOP_sw_path = @"D:\ICOP\";
-        public const string ICOP_history_path = @"D:\ICOP\History\";
-        public const string ICOP_model_path = @"D:\ICOP\Model\";
-        public const string ICOP_setting_path = @"D:\ICOP\Setting\";
-        public const string ICOP_sample_path = @"D:\ICOP\Sample\";
-        public const string ICOP_Statitic_path = @"D:\ICOP\Statitics\";
-
-        public const string ICOP_tester_OK = "PASS";
-        public const string ICOP_tester_NG = "FAIL";
-
-
-        public const int maxWidth = 100000;
-        public const int maxHeight = 80000;
-        public static class Positions
+        private void timerUpdateChar_Tick(object sender, EventArgs e)
         {
-            public const string ICam0 = "ICam0";
-            public const string ICam1 = "ICam1";
-            public const string ICam2 = "ICam2";
-            public const string ICam3 = "ICam3";
-        }
-        public static class PBA
-        {
-            public const string PBA0 = "PBA0";
-            public const string PBA1 = "PBA1";
-            public const string PBA2 = "PBA2";
-            public const string PBA3 = "PBA3";
-        }
-        public class Paint
-        {
-            public SolidBrush brush = new SolidBrush(Color.Cyan);
-            public Font Font = new Font("Microsoft YaHei UI", 8, FontStyle.Bold);
-            public Pen pen = new Pen(Color.Cyan);
-            public Paint()
+            if (CharCircle <= 360)
             {
-                pen.Width = 2;
+                Statistical.DrawChart(pbChart, CharCircle);
+                CharCircle = CharCircle + (360 - CharCircle) / 50 + 1;
+                timerUpdateChar.Start();
             }
-
+            else
+            {
+                timerUpdateChar.Stop();
+                //timerUpdateChar.Dispose();
+            }
         }
-
     }
 }

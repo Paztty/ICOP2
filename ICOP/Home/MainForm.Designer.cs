@@ -65,6 +65,11 @@
             this.clResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSkip = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbCounterPass = new System.Windows.Forms.Label();
+            this.lbCounterPercent = new System.Windows.Forms.Label();
+            this.lbCounterFail = new System.Windows.Forms.Label();
+            this.lbCounterTotal = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -97,11 +102,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbSupport = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbCounterPass = new System.Windows.Forms.Label();
-            this.lbCounterPercent = new System.Windows.Forms.Label();
-            this.lbCounterFail = new System.Windows.Forms.Label();
-            this.lbCounterTotal = new System.Windows.Forms.Label();
+            this.timerUpdateChar = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -522,6 +523,7 @@
             this.dgwProgram.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.dgwProgram.MultiSelect = false;
             this.dgwProgram.Name = "dgwProgram";
+            this.dgwProgram.ReadOnly = true;
             this.dgwProgram.RowHeadersVisible = false;
             this.dgwProgram.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgwProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -541,6 +543,7 @@
             this.clNo.Frozen = true;
             this.clNo.HeaderText = "No.";
             this.clNo.Name = "clNo";
+            this.clNo.ReadOnly = true;
             this.clNo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clNo.Width = 25;
             // 
@@ -550,6 +553,7 @@
             this.clName.FillWeight = 102.6831F;
             this.clName.HeaderText = "Component";
             this.clName.Name = "clName";
+            this.clName.ReadOnly = true;
             this.clName.Width = 70;
             // 
             // clPosition
@@ -558,6 +562,7 @@
             this.clPosition.FillWeight = 102.6831F;
             this.clPosition.HeaderText = "Pos";
             this.clPosition.Name = "clPosition";
+            this.clPosition.ReadOnly = true;
             this.clPosition.Width = 50;
             // 
             // clPBA
@@ -565,6 +570,7 @@
             this.clPBA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clPBA.HeaderText = "PBA";
             this.clPBA.Name = "clPBA";
+            this.clPBA.ReadOnly = true;
             this.clPBA.Width = 50;
             // 
             // clFuncName
@@ -573,6 +579,7 @@
             this.clFuncName.FillWeight = 102.6831F;
             this.clFuncName.HeaderText = "Func";
             this.clFuncName.Name = "clFuncName";
+            this.clFuncName.ReadOnly = true;
             this.clFuncName.Width = 50;
             // 
             // clSpect
@@ -581,6 +588,7 @@
             this.clSpect.FillWeight = 102.6831F;
             this.clSpect.HeaderText = "Spect";
             this.clSpect.Name = "clSpect";
+            this.clSpect.ReadOnly = true;
             this.clSpect.Width = 55;
             // 
             // clValue
@@ -589,6 +597,7 @@
             this.clValue.FillWeight = 102.6831F;
             this.clValue.HeaderText = "Value";
             this.clValue.Name = "clValue";
+            this.clValue.ReadOnly = true;
             // 
             // clResult
             // 
@@ -596,6 +605,7 @@
             this.clResult.FillWeight = 102.6831F;
             this.clResult.HeaderText = "Result";
             this.clResult.Name = "clResult";
+            this.clResult.ReadOnly = true;
             this.clResult.Width = 60;
             // 
             // clSkip
@@ -604,6 +614,7 @@
             this.clSkip.FillWeight = 102.6831F;
             this.clSkip.HeaderText = "Skip";
             this.clSkip.Name = "clSkip";
+            this.clSkip.ReadOnly = true;
             this.clSkip.Width = 36;
             // 
             // panel4
@@ -633,14 +644,74 @@
             this.panel4.Size = new System.Drawing.Size(495, 444);
             this.panel4.TabIndex = 4;
             // 
+            // lbCounterPass
+            // 
+            this.lbCounterPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterPass.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
+            this.lbCounterPass.Location = new System.Drawing.Point(242, 321);
+            this.lbCounterPass.Name = "lbCounterPass";
+            this.lbCounterPass.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterPass.TabIndex = 35;
+            this.lbCounterPass.Text = "0";
+            this.lbCounterPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterPercent
+            // 
+            this.lbCounterPercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterPercent.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lbCounterPercent.Location = new System.Drawing.Point(242, 411);
+            this.lbCounterPercent.Name = "lbCounterPercent";
+            this.lbCounterPercent.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterPercent.TabIndex = 34;
+            this.lbCounterPercent.Text = "0 %";
+            this.lbCounterPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterFail
+            // 
+            this.lbCounterFail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterFail.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterFail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbCounterFail.Location = new System.Drawing.Point(242, 351);
+            this.lbCounterFail.Name = "lbCounterFail";
+            this.lbCounterFail.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterFail.TabIndex = 33;
+            this.lbCounterFail.Text = "0";
+            this.lbCounterFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCounterTotal
+            // 
+            this.lbCounterTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbCounterTotal.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCounterTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.lbCounterTotal.Location = new System.Drawing.Point(242, 381);
+            this.lbCounterTotal.Name = "lbCounterTotal";
+            this.lbCounterTotal.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterTotal.TabIndex = 32;
+            this.lbCounterTotal.Text = "0";
+            this.lbCounterTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
+            this.label2.Location = new System.Drawing.Point(153, 321);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 26);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "PASS";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.label7.Location = new System.Drawing.Point(271, 411);
+            this.label7.Location = new System.Drawing.Point(153, 411);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 26);
+            this.label7.Size = new System.Drawing.Size(94, 26);
             this.label7.TabIndex = 30;
             this.label7.Text = "PERCENT";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -650,9 +721,9 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(271, 351);
+            this.label6.Location = new System.Drawing.Point(153, 351);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 26);
+            this.label6.Size = new System.Drawing.Size(94, 26);
             this.label6.TabIndex = 29;
             this.label6.Text = "FAIL";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -662,9 +733,9 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label4.Location = new System.Drawing.Point(271, 381);
+            this.label4.Location = new System.Drawing.Point(153, 381);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 26);
+            this.label4.Size = new System.Drawing.Size(94, 26);
             this.label4.TabIndex = 27;
             this.label4.Text = "TOTAL";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -675,7 +746,7 @@
             this.pbChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbChart.Location = new System.Drawing.Point(3, 321);
             this.pbChart.Name = "pbChart";
-            this.pbChart.Size = new System.Drawing.Size(262, 121);
+            this.pbChart.Size = new System.Drawing.Size(148, 121);
             this.pbChart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbChart.TabIndex = 24;
             this.pbChart.TabStop = false;
@@ -691,9 +762,9 @@
             this.btCallSupport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btCallSupport.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCallSupport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btCallSupport.Location = new System.Drawing.Point(420, 255);
+            this.btCallSupport.Location = new System.Drawing.Point(424, 255);
             this.btCallSupport.Name = "btCallSupport";
-            this.btCallSupport.Size = new System.Drawing.Size(72, 63);
+            this.btCallSupport.Size = new System.Drawing.Size(68, 63);
             this.btCallSupport.TabIndex = 23;
             this.btCallSupport.Text = "EMC";
             this.btCallSupport.UseVisualStyleBackColor = false;
@@ -710,9 +781,9 @@
             this.btLoadNextFailStep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btLoadNextFailStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLoadNextFailStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btLoadNextFailStep.Location = new System.Drawing.Point(246, 221);
+            this.btLoadNextFailStep.Location = new System.Drawing.Point(0, 284);
             this.btLoadNextFailStep.Name = "btLoadNextFailStep";
-            this.btLoadNextFailStep.Size = new System.Drawing.Size(246, 31);
+            this.btLoadNextFailStep.Size = new System.Drawing.Size(254, 31);
             this.btLoadNextFailStep.TabIndex = 21;
             this.btLoadNextFailStep.Text = "Next Fail Item";
             this.btLoadNextFailStep.UseVisualStyleBackColor = false;
@@ -729,7 +800,7 @@
             this.btAddReference.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btAddReference.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAddReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btAddReference.Location = new System.Drawing.Point(-3, 221);
+            this.btAddReference.Location = new System.Drawing.Point(0, 255);
             this.btAddReference.Name = "btAddReference";
             this.btAddReference.Size = new System.Drawing.Size(142, 31);
             this.btAddReference.TabIndex = 22;
@@ -742,9 +813,9 @@
             this.lbResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.lbResult.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbResult.Location = new System.Drawing.Point(3, 255);
+            this.lbResult.Location = new System.Drawing.Point(335, 321);
             this.lbResult.Name = "lbResult";
-            this.lbResult.Size = new System.Drawing.Size(411, 63);
+            this.lbResult.Size = new System.Drawing.Size(157, 116);
             this.lbResult.TabIndex = 0;
             this.lbResult.Text = "TESTING";
             this.lbResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -782,7 +853,7 @@
             this.btChangeSpect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btChangeSpect.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btChangeSpect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btChangeSpect.Location = new System.Drawing.Point(133, 221);
+            this.btChangeSpect.Location = new System.Drawing.Point(140, 255);
             this.btChangeSpect.Name = "btChangeSpect";
             this.btChangeSpect.Size = new System.Drawing.Size(114, 31);
             this.btChangeSpect.TabIndex = 18;
@@ -974,65 +1045,10 @@
             this.lbSupport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbSupport.Click += new System.EventHandler(this.lbSupport_Click);
             // 
-            // label2
+            // timerUpdateChar
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
-            this.label2.Location = new System.Drawing.Point(271, 321);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 26);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "PASS";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbCounterPass
-            // 
-            this.lbCounterPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbCounterPass.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCounterPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
-            this.lbCounterPass.Location = new System.Drawing.Point(391, 321);
-            this.lbCounterPass.Name = "lbCounterPass";
-            this.lbCounterPass.Size = new System.Drawing.Size(101, 26);
-            this.lbCounterPass.TabIndex = 35;
-            this.lbCounterPass.Text = "0";
-            this.lbCounterPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbCounterPercent
-            // 
-            this.lbCounterPercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbCounterPercent.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCounterPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lbCounterPercent.Location = new System.Drawing.Point(391, 411);
-            this.lbCounterPercent.Name = "lbCounterPercent";
-            this.lbCounterPercent.Size = new System.Drawing.Size(101, 26);
-            this.lbCounterPercent.TabIndex = 34;
-            this.lbCounterPercent.Text = "0 %";
-            this.lbCounterPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbCounterFail
-            // 
-            this.lbCounterFail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbCounterFail.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCounterFail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbCounterFail.Location = new System.Drawing.Point(391, 351);
-            this.lbCounterFail.Name = "lbCounterFail";
-            this.lbCounterFail.Size = new System.Drawing.Size(101, 26);
-            this.lbCounterFail.TabIndex = 33;
-            this.lbCounterFail.Text = "0";
-            this.lbCounterFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbCounterTotal
-            // 
-            this.lbCounterTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbCounterTotal.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCounterTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.lbCounterTotal.Location = new System.Drawing.Point(391, 381);
-            this.lbCounterTotal.Name = "lbCounterTotal";
-            this.lbCounterTotal.Size = new System.Drawing.Size(101, 26);
-            this.lbCounterTotal.TabIndex = 32;
-            this.lbCounterTotal.Text = "0";
-            this.lbCounterTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timerUpdateChar.Interval = 10;
+            this.timerUpdateChar.Tick += new System.EventHandler(this.timerUpdateChar_Tick);
             // 
             // MainForm
             // 
@@ -1153,6 +1169,7 @@
         private System.Windows.Forms.Label lbCounterFail;
         private System.Windows.Forms.Label lbCounterTotal;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timerUpdateChar;
     }
 }
 

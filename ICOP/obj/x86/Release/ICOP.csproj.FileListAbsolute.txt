@@ -54,3 +54,4 @@ F:\1. Project\15.ICC\ICOP\ICOP\bin\x86\Release\System.Buffers.xml
 F:\1. Project\15.ICC\ICOP\ICOP\bin\x86\Release\System.Numerics.Vectors.xml
 F:\1. Project\15.ICC\ICOP\ICOP\bin\x86\Release\System.Threading.Tasks.Extensions.xml
 F:\1. Project\15.ICC\ICOP\ICOP\bin\x86\Release\System.ValueTuple.xml
+F:\1. Project\15.ICC\ICOP\ICOP\obj\x86\Release\ICOP.IcopLogin.resources

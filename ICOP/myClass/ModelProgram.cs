@@ -10,6 +10,8 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Windows.Forms;
 using ZXing;
+using Size = System.Drawing.Size;
+
 namespace ICOP
 {
     public class ModelProgram
@@ -46,6 +48,7 @@ namespace ICOP
         public System.Drawing.Image ModelImageCam2;
         public System.Drawing.Image ModelImageCam3;
 
+        public int PBA_Count { get; set; } = 1;
         public string result = "TESTTING";
         public bool loaded = false;
         public class ModelStep
@@ -415,95 +418,12 @@ namespace ICOP
             File.WriteAllText(MotherFolder + ModelName + ".imdl", ModelJson);
         }
 
-        public void saveResultImage(Image ICam0, Image ICam1, Image ICam2, Image ICam3)
-        {
-            Global.Paint paint_NG = new Global.Paint
-            {
-                brush = new SolidBrush(Color.Red),
-                Font = new Font("Microsoft YaHei UI", 20, FontStyle.Bold),
-                pen = new Pen(Color.Red, 5)
-            };
-            Pen pen = new Pen(Color.Red);
-
-            Bitmap resultBitmap = new Bitmap(ICam0.Size.Width * 2, ICam0.Size.Height * 2);
-            using (var g = Graphics.FromImage(resultBitmap))
-            {
-                g.DrawImage(ICam0, 0, 0);
-                g.DrawImage(ICam1, ICam0.Width, 0);
-                g.DrawImage(ICam2, 0, ICam0.Height);
-                g.DrawImage(ICam3, ICam0.Width, ICam0.Height);
-                RectangleF[] rectangleF = new RectangleF[1];
-                for (int i = 0; i < modelSteps.Count; i++)
-                {
-                    if (modelSteps[i].Result == Global.ICOP_tester_NG)
-                    {
-                        switch (modelSteps[i].Position)
-                        {
-                            case Global.Positions.ICam0:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam0);
-                                rectangleF[0].X = rectangleF[0].X;
-                                rectangleF[0].Y = rectangleF[0].Y;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                            case Global.Positions.ICam1:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam1);
-                                rectangleF[0].X = rectangleF[0].X + ICam0.Width;
-                                rectangleF[0].Y = rectangleF[0].Y;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                            case Global.Positions.ICam2:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam2);
-                                rectangleF[0].X = rectangleF[0].X;
-                                rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                            case Global.Positions.ICam3:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam3);
-                                rectangleF[0].X = rectangleF[0].X + ICam0.Width;
-                                rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                        }
-                    }
-                }
-            }
-            resultBitmap.Save(@"D:\ICOP\result.png");
-        }
 
 
 
+        #region Process Funtions
+
+        
 
         public string QRDT(ModelStep modelStep, Bitmap bitmap)
         {
@@ -623,6 +543,102 @@ namespace ICOP
             Console.WriteLine();
             return returnBitmap;
         }
+        #endregion
+
+        #region Report
+        public void saveResultImage(Image ICam0, Image ICam1, Image ICam2, Image ICam3)
+        {
+            Global.Paint paint_NG = new Global.Paint
+            {
+                brush = new SolidBrush(Color.Red),
+                Font = new Font("Microsoft YaHei UI", 20, FontStyle.Bold),
+                pen = new Pen(Color.Red, 5)
+            };
+            Pen pen = new Pen(Color.Red);
+
+            Bitmap resultBitmap = new Bitmap(ICam0.Size.Width * 2, ICam0.Size.Height * 2);
+            using (var g = Graphics.FromImage(resultBitmap))
+            {
+                g.DrawImage(ICam0, 0, 0);
+                g.DrawImage(ICam1, ICam0.Width, 0);
+                g.DrawImage(ICam2, 0, ICam0.Height);
+                g.DrawImage(ICam3, ICam0.Width, ICam0.Height);
+                RectangleF[] rectangleF = new RectangleF[1];
+                for (int i = 0; i < modelSteps.Count; i++)
+                {
+                    if (modelSteps[i].Result == Global.ICOP_tester_NG)
+                    {
+                        switch (modelSteps[i].Position)
+                        {
+                            case Global.Positions.ICam0:
+                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam0);
+                                rectangleF[0].X = rectangleF[0].X;
+                                rectangleF[0].Y = rectangleF[0].Y;
+                                g.DrawRectangles(paint_NG.pen, rectangleF);
+                                g.DrawString
+                                            (
+                                            modelSteps[i].Name,
+                                            paint_NG.Font,
+                                            paint_NG.brush,
+                                            rectangleF[0].X,
+                                            rectangleF[0].Y - (paint_NG.Font.Height)
+                                            );
+                                break;
+                            case Global.Positions.ICam1:
+                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam1);
+                                rectangleF[0].X = rectangleF[0].X + ICam0.Width;
+                                rectangleF[0].Y = rectangleF[0].Y;
+                                g.DrawRectangles(paint_NG.pen, rectangleF);
+                                g.DrawString
+                                            (
+                                            modelSteps[i].Name,
+                                            paint_NG.Font,
+                                            paint_NG.brush,
+                                            rectangleF[0].X,
+                                            rectangleF[0].Y - (paint_NG.Font.Height)
+                                            );
+                                break;
+                            case Global.Positions.ICam2:
+                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam2);
+                                rectangleF[0].X = rectangleF[0].X;
+                                rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
+                                g.DrawRectangles(paint_NG.pen, rectangleF);
+                                g.DrawString
+                                            (
+                                            modelSteps[i].Name,
+                                            paint_NG.Font,
+                                            paint_NG.brush,
+                                            rectangleF[0].X,
+                                            rectangleF[0].Y - (paint_NG.Font.Height)
+                                            );
+                                break;
+                            case Global.Positions.ICam3:
+                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam3);
+                                rectangleF[0].X = rectangleF[0].X + ICam0.Width;
+                                rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
+                                g.DrawRectangles(paint_NG.pen, rectangleF);
+                                g.DrawString
+                                            (
+                                            modelSteps[i].Name,
+                                            paint_NG.Font,
+                                            paint_NG.brush,
+                                            rectangleF[0].X,
+                                            rectangleF[0].Y - (paint_NG.Font.Height)
+                                            );
+                                break;
+                        }
+                    }
+                }
+            }
+            resultBitmap = (Bitmap)resizeImage(resultBitmap,new Size(1920,1080));
+            resultBitmap.Save(Global.ICOP_history_path + "result.png");
+        }
+
+        private Image resizeImage(Image imgToResize, Size size)
+        {
+            return (Image)(new Bitmap(imgToResize, size));
+        }
+        #endregion
 
     }
 }

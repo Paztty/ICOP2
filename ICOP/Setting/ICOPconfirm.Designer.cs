@@ -32,10 +32,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbMessenger = new System.Windows.Forms.Label();
             this.btTakeShot = new System.Windows.Forms.Button();
             this.btLoadImage = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -85,18 +85,6 @@
             this.label1.Text = "CONFIRM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::ICOP.Properties.Resources.LogoHeader;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(109, 24);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
-            // 
             // lbMessenger
             // 
             this.lbMessenger.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -120,7 +108,7 @@
             this.btTakeShot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btTakeShot.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btTakeShot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btTakeShot.Location = new System.Drawing.Point(329, 119);
+            this.btTakeShot.Location = new System.Drawing.Point(199, 131);
             this.btTakeShot.Name = "btTakeShot";
             this.btTakeShot.Size = new System.Drawing.Size(136, 43);
             this.btTakeShot.TabIndex = 4;
@@ -138,13 +126,25 @@
             this.btLoadImage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(79)))), ((int)(((byte)(98)))));
             this.btLoadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLoadImage.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLoadImage.Location = new System.Drawing.Point(187, 119);
+            this.btLoadImage.Location = new System.Drawing.Point(341, 131);
             this.btLoadImage.Name = "btLoadImage";
             this.btLoadImage.Size = new System.Drawing.Size(136, 43);
             this.btLoadImage.TabIndex = 3;
             this.btLoadImage.Text = "OK";
             this.btLoadImage.UseVisualStyleBackColor = true;
             this.btLoadImage.Click += new System.EventHandler(this.btLoadImage_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::ICOP.Properties.Resources.LogoHeader;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(109, 24);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
             // IcopConfirm
             // 
@@ -161,6 +161,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1960, 1066);
             this.Name = "IcopConfirm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Main_Load);
             this.Resize += new System.EventHandler(this.FormMainMenu_Resize);
             this.panel1.ResumeLayout(false);

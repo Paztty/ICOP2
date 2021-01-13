@@ -1,0 +1,34 @@
+{
+  "accList": [
+    {
+      "userName": "admin",
+      "passWord": "1",
+      "Permission": 2,
+      "InUsing": false
+    },
+    {
+      "userName": "admin1",
+      "passWord": "1",
+      "Permission": 2,
+      "InUsing": false
+    },
+    {
+      "userName": "admin2",
+      "passWord": "1",
+      "Permission": 2,
+      "InUsing": false
+    },
+    {
+      "userName": "admin3",
+      "passWord": "1",
+      "Permission": 2,
+      "InUsing": false
+    },
+    {
+      "userName": "admin4",
+      "passWord": "1",
+      "Permission": 2,
+      "InUsing": false
+    }
+  ]
+}

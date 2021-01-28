@@ -2,6 +2,7 @@
 using OpenCvSharp.Extensions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -18,44 +19,38 @@ namespace ICOP
     {
         public enum IcopFunction
         {
-            [EnumMember(Value = "CODT")]
+            [Description("Số phần trăm tương ứng giữa hình ảnh được tạo bởi thao tác này và hình ảnh thực tế.\\n" +
+                " Hình ảnh thực càng giống ảnh gốc, số này càng có giá trị cao")]
             CODT = 0,
             [EnumMember(Value = "CRDT")]
             SDDT = 1,
             [EnumMember(Value = "QRDT")]
             QRDT = 2,
         }
-        public enum IcopPBA
-        {
-            [EnumMember(Value = "PBA0")]
-            PBA0 = 0,
-            [EnumMember(Value = "PBA1")]
-            PBA1 = 1,
-            [EnumMember(Value = "PBA2")]
-            PBA2 = 2,
-            [EnumMember(Value = "PBA3")]
-            PBA3 = 3,
-        }
-        public string ModelName { get; set; } = "ModelExample";
+
+        public string AccCreater { get; set; }
+        public string ACCPass { get; set; }
+        public string ModelName { get; set; } = "";
+        public string PCB_Code { get; set; } = "";
         public string MotherFolder { get; set; } = "";
         public string ModelImagePathCam0 { get; set; } = "";
         public string ModelImagePathCam1 { get; set; } = "";
         public string ModelImagePathCam2 { get; set; } = "";
         public string ModelImagePathCam3 { get; set; } = "";
-
+        public string ModelImageResult { get; set; } = "";
         public System.Drawing.Image ModelImageCam0;
         public System.Drawing.Image ModelImageCam1;
         public System.Drawing.Image ModelImageCam2;
         public System.Drawing.Image ModelImageCam3;
 
         public int PBA_Count { get; set; } = 1;
-        public string result = "TESTTING";
+        public string result { get; set; } = "TESTTING";
         public bool loaded = false;
         public class ModelStep
         {
             public string Name { get; set; } = "CON1";
-            public string Position { get; set; } = "";
-            public IcopPBA PBA { get; set; } = IcopPBA.PBA0;
+            public string Position { get; set; } = Global.Positions.ICam0;
+            public int PBA { get; set; } = 0;
             public ModelProgram.IcopFunction Func { get; set; } = ModelProgram.IcopFunction.CODT;
             public string Spect { get; set; } = "0.00";
             public string Value { get; set; } = "";
@@ -88,7 +83,10 @@ namespace ICOP
             {
                 ProgramStep.Rows.Add(No, this.Name, this.Position, this.PBA, this.Func.ToString(), this.Spect, this.Value, this.Result, this.Skip);
             }
-
+            public void addToReportDataView(int No, DataGridView reportView)
+            {
+                reportView.Rows.Add(No, this.Name, this.Func.ToString(), this.Spect, this.Value, this.Result, this.Skip);
+            }
             public void addToDataStepView(int No, DataGridView ProgramStep)
             {
                 ProgramStep.Rows.Add(No, this.Name, this.Position, this.PBA, Func.ToString(), this.Spect, this.Skip);
@@ -109,7 +107,21 @@ namespace ICOP
                 Name.Text = this.Name;
                 Position.Text = this.Position;
                 Func.SelectedIndex = (int)this.Func;
-                PBA.SelectedIndex = (int)this.PBA;
+
+                if (this.PBA > 0)
+                {
+                    try
+                    {
+                        PBA.SelectedIndex = this.PBA - 1;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("PBA: " + this.PBA + "  PBA count: " + PBA.Items.Count);
+                    }
+                    
+                }
+                    
+
                 Spect.Text = this.Spect;
                 Skip.Checked = this.Skip;
             }
@@ -119,14 +131,14 @@ namespace ICOP
                 {
                     this.Spect = Spect.Text;
                     this.Skip = Skip.Checked;
-                    this.PBA = (IcopPBA)PBA.SelectedIndex;
+                    this.PBA = PBA.SelectedIndex + 1;
                 }
                 else
                 {
                     this.Name = Name.Text;
                     this.Position = Position.Text;
                     this.Func = (IcopFunction)Func.SelectedIndex;
-                    this.PBA = (IcopPBA)PBA.SelectedIndex;
+                    this.PBA = PBA.SelectedIndex + 1;
                     this.Spect = Spect.Text;
                     this.Skip = Skip.Checked;
                 }
@@ -230,14 +242,23 @@ namespace ICOP
             {
                 for (int i = 0; i < imageSources.Count; i++)
                 {
-                    if (File.Exists(imageSources[i].ImageName))
+                    try
                     {
-                        using (var fs = new System.IO.FileStream(imageSources[i].ImageName, System.IO.FileMode.Open))
+                        if (File.Exists(imageSources[i].ImageName))
                         {
-                            var bmp = new Bitmap(fs);
-                            imageSources[i].bitmap = (Bitmap)bmp.Clone();
+                            using (var fs = new System.IO.FileStream(imageSources[i].ImageName, System.IO.FileMode.Open))
+                            {
+                                var bmp = new Bitmap(fs);
+                                imageSources[i].bitmap = (Bitmap)bmp.Clone();
+                            }
+                        }
+                        else
+                        {
+                            Global.addToLog("not found " + imageSources[i].ImageName + "\n");
                         }
                     }
+                    catch { }
+
                 }
             }
 
@@ -246,42 +267,39 @@ namespace ICOP
         public List<ModelStep> modelSteps { get; set; } = new List<ModelStep>(100);
         public ModelProgram()
         {
-            modelSteps.Add(new ModelProgram.ModelStep
+            modelSteps.Add(new ModelStep
             {
-                Name = "QR1",
+                Name = "QR",
+                Spect = "23",
                 Position = Global.Positions.ICam0,
-                PBA = IcopPBA.PBA0,
-                Func = ModelProgram.IcopFunction.QRDT,
-                Spect = "23",
-                Skip = true,
+                Func = IcopFunction.QRDT,
+                PBA = 1
             });
-            modelSteps.Add(new ModelProgram.ModelStep
+        }
+        public ModelProgram(string Report)
+        {
+        }
+
+        public ModelProgram(string accCreater, string modelName, string PCB_code, int PBA_counter, int QR_length)
+        {
+            Console.WriteLine(modelName);
+            this.AccCreater = accCreater;
+            this.ModelName = modelName;
+            this.PCB_Code = PCB_code;
+            this.PBA_Count = PBA_counter;
+            for (int i = 0; i < PBA_counter; i++)
             {
-                Name = "QR2",
-                Position = Global.Positions.ICam1,
-                PBA = IcopPBA.PBA1,
-                Func = ModelProgram.IcopFunction.QRDT,
-                Spect = "23",
-                Skip = true,
-            });
-            modelSteps.Add(new ModelProgram.ModelStep
-            {
-                Name = "QR3",
-                Position = Global.Positions.ICam2,
-                PBA = IcopPBA.PBA2,
-                Func = ModelProgram.IcopFunction.QRDT,
-                Spect = "23",
-                Skip = true,
-            });
-            modelSteps.Add(new ModelProgram.ModelStep
-            {
-                Name = "QR4",
-                Position = Global.Positions.ICam3,
-                PBA = IcopPBA.PBA3,
-                Func = ModelProgram.IcopFunction.QRDT,
-                Spect = "23",
-                Skip = true,
-            });
+                modelSteps.Add(new ModelStep
+                {
+                    Name = "QR" + (i + 1),
+                    Spect = QR_length.ToString(),
+                    Position = Global.Positions.ICam0,
+                    Func = IcopFunction.QRDT,
+                    PBA = i + 1,
+                    Skip = false
+                });
+            }
+            Console.WriteLine(this.ModelName);
         }
 
 
@@ -304,22 +322,22 @@ namespace ICOP
         public bool Save()
         {
             bool saveresult = true;
-
-            if (Directory.Exists(MotherFolder + ModelName))
+            this.MotherFolder = Global.ICOP_model_path + this.PCB_Code + @"\" + this.ModelName + @"\";
+            if (Directory.Exists(MotherFolder + this.ModelName + @"_Image\"))
             {
-                Directory.Move(MotherFolder + ModelName + @"_Image\", MotherFolder + ModelName + @"_ImageOld\");
-                Directory.Delete(MotherFolder + ModelName + @"_ImageOld\", true);
-                Directory.CreateDirectory(MotherFolder + ModelName + @"_Image\");
+                Directory.Move(MotherFolder + this.ModelName + @"_Image\", MotherFolder + this.ModelName + @"_ImageOld\");
+                Directory.Delete(MotherFolder + this.ModelName + @"_ImageOld\", true);
+                Directory.CreateDirectory(MotherFolder + this.ModelName + @"_Image\");
             }
             else
             {
-                Directory.CreateDirectory(MotherFolder + ModelName + @"_Image\");
+                Directory.CreateDirectory(MotherFolder + this.ModelName + @"_Image\");
             }
             if (ModelImageCam0 != null)
             {
                 using (Bitmap bmp = (Bitmap)ModelImageCam0.Clone())
                 {
-                    string fileNameSave = MotherFolder + ModelName + @"_Image\" + ModelName + "_cam0" + ".png";
+                    string fileNameSave = MotherFolder + this.ModelName + @"_Image\" + ModelName + "_cam0" + ".png";
                     Console.WriteLine(fileNameSave);
                     bmp.Save(fileNameSave);
                     ModelImagePathCam0 = fileNameSave;
@@ -329,7 +347,7 @@ namespace ICOP
             {
                 using (Bitmap bmp = (Bitmap)ModelImageCam1.Clone())
                 {
-                    string fileNameSave = MotherFolder + ModelName + @"_Image\" + ModelName + "_cam1" + ".png";
+                    string fileNameSave = MotherFolder + this.ModelName + @"_Image\" + ModelName + "_cam1" + ".png";
                     Console.WriteLine(fileNameSave);
                     bmp.Save(fileNameSave);
                     ModelImagePathCam1 = fileNameSave;
@@ -339,7 +357,7 @@ namespace ICOP
             {
                 using (Bitmap bmp = (Bitmap)ModelImageCam2.Clone())
                 {
-                    string fileNameSave = MotherFolder + ModelName + @"_Image\" + ModelName + "_cam2" + ".png";
+                    string fileNameSave = MotherFolder + this.ModelName + @"_Image\" + ModelName + "_cam2" + ".png";
                     Console.WriteLine(fileNameSave);
                     bmp.Save(fileNameSave);
                     ModelImagePathCam2 = fileNameSave;
@@ -349,7 +367,7 @@ namespace ICOP
             {
                 using (Bitmap bmp = (Bitmap)ModelImageCam3.Clone())
                 {
-                    string fileNameSave = MotherFolder + ModelName + @"_Image\" + ModelName + "_cam3" + ".png";
+                    string fileNameSave = MotherFolder + this.ModelName + @"_Image\" + ModelName + "_cam3" + ".png";
                     Console.WriteLine(fileNameSave);
                     bmp.Save(fileNameSave);
                     ModelImagePathCam3 = fileNameSave;
@@ -365,10 +383,22 @@ namespace ICOP
                     {
                         using (Bitmap bmp = (Bitmap)modelSteps[i].imageSources[0].bitmap.Clone())
                         {
-                            string fileNameSave = MotherFolder + ModelName + @"_Image\" + modelSteps[i].Name + "_" + 0 + "_" + modelSteps[i].PBA.ToString() + "_" + modelSteps[i].Func.ToString() + ".png";
+                            string fileNameSave = MotherFolder + this.ModelName + @"_Image\" + modelSteps[i].Name + "_" + 0 + "_" + modelSteps[i].PBA.ToString() + "_" + modelSteps[i].Func.ToString() + ".png";
                             Console.WriteLine(fileNameSave);
                             bmp.Save(fileNameSave, ImageFormat.Png);
                             modelSteps[i].imageSources[0].ImageName = fileNameSave;
+                        }
+                        for (int imageCounter = modelSteps[i].imageSources.Count - 1; imageCounter >= 0; imageCounter--)
+                        {
+                            if (modelSteps[i].imageSources[imageCounter].bitmap.Size != modelSteps[i].imageSources[0].bitmap.Size)
+                            {
+                                if (File.Exists(modelSteps[i].imageSources[imageCounter].ImageName))
+                                {
+                                    File.Delete(modelSteps[i].imageSources[imageCounter].ImageName);
+                                    Console.WriteLine("Delete: " + modelSteps[i].imageSources[imageCounter].ImageName);
+                                }
+                                modelSteps[i].imageSources.RemoveAt(imageCounter);
+                            }
                         }
                     }
                 }
@@ -379,7 +409,7 @@ namespace ICOP
             };
             if (!Directory.Exists(MotherFolder)) Directory.CreateDirectory(MotherFolder);
             string ModelJson = JsonSerializer.Serialize(this, options);
-            File.WriteAllText(MotherFolder + ModelName + ".imdl", ModelJson);
+            File.WriteAllText(MotherFolder + this.ModelName + ".imdl", ModelJson);
             return saveresult;
         }
 
@@ -403,7 +433,7 @@ namespace ICOP
             };
             if (!Directory.Exists(MotherFolder)) Directory.CreateDirectory(MotherFolder);
             string ModelJson = JsonSerializer.Serialize(this, options);
-            File.WriteAllText(MotherFolder + ModelName + ".imdl", ModelJson);
+            File.WriteAllText(MotherFolder + this.ModelName + ".imdl", ModelJson);
         }
 
         public void ChangerSpectvalue(ModelStep modelStep, string value)
@@ -415,22 +445,17 @@ namespace ICOP
             };
             if (!Directory.Exists(MotherFolder)) Directory.CreateDirectory(MotherFolder);
             string ModelJson = JsonSerializer.Serialize(this, options);
-            File.WriteAllText(MotherFolder + ModelName + ".imdl", ModelJson);
+            File.WriteAllText(MotherFolder + this.ModelName + ".imdl", ModelJson);
         }
-
-
-
 
         #region Process Funtions
 
-        
 
-        public string QRDT(ModelStep modelStep, Bitmap bitmap)
+
+        public void QRDT(ModelStep modelStep, Bitmap bitmap)
         {
-            string QRcode = "";
             Mat matImage = new Mat();
             Mat outImage = matImage;
-            bitmap.SetResolution(500, 500);
             matImage = bitmap.ToMat();
             bitmap.Dispose();
             var codeDetector = new BarcodeReader();
@@ -492,13 +517,13 @@ namespace ICOP
             if (result != null && result.Text.Length == Convert.ToInt32(modelStep.Spect))
             {
                 modelStep.Result = Global.ICOP_tester_OK;
-                QRcode = result.Text;
+                modelStep.Value = result.Text;
             }
             else
             {
                 modelStep.Result = Global.ICOP_tester_NG;
+                modelStep.Value = "QR_not_detect";
             }
-            return QRcode;
         }
         public Bitmap CODT(ModelStep modelStep, Bitmap bitmap)
         {
@@ -510,10 +535,11 @@ namespace ICOP
                 {
                     Console.Write(i + " ");
                     returnBitmap = modelStep.imageSources[i].bitmap;
-                    Mat matSource = modelStep.imageSources[i].bitmap.ToMat();
-                    Mat matArea = bitmap.ToMat();
+                    Bitmap bitmapSource = resizeImage(modelStep.imageSources[i].bitmap, new Size(100, 100));
+                    Bitmap bitmapArea = resizeImage(bitmap, new Size(100, 100));
+                    Mat matSource = bitmapSource.ToMat();
+                    Mat matArea = bitmapArea.ToMat();
                     Mat scoreMat = new Mat();
-
                     try
                     {
                         Cv2.MatchTemplate(matArea, matSource, scoreMat, TemplateMatchModes.CCoeffNormed);
@@ -528,6 +554,8 @@ namespace ICOP
                         {
                             modelStep.Result = Global.ICOP_tester_NG;
                         }
+                        modelStep.sourceImage = matSource.ToBitmap();
+                        modelStep.templateImage = matArea.ToBitmap();
                     }
                     catch (Exception err)
                     {
@@ -535,8 +563,6 @@ namespace ICOP
                         modelStep.Value = err.Message;
                     }
 
-                    modelStep.sourceImage = matSource.ToBitmap();
-                    modelStep.templateImage = matArea.ToBitmap();
 
                 }
             }
@@ -546,15 +572,21 @@ namespace ICOP
         #endregion
 
         #region Report
-        public void saveResultImage(Image ICam0, Image ICam1, Image ICam2, Image ICam3)
+        public void saveResult(DateTime dateTime, Image ICam0, Image ICam1, Image ICam2, Image ICam3)
         {
             Global.Paint paint_NG = new Global.Paint
             {
                 brush = new SolidBrush(Color.Red),
                 Font = new Font("Microsoft YaHei UI", 20, FontStyle.Bold),
-                pen = new Pen(Color.Red, 5)
+                pen = new Pen(Color.Red, 3)
             };
-            Pen pen = new Pen(Color.Red);
+            Global.Paint paint_OK = new Global.Paint
+            {
+                brush = new SolidBrush(Color.Green),
+                Font = new Font("Microsoft YaHei UI", 20, FontStyle.Bold),
+                pen = new Pen(Color.Green, 3)
+            };
+            Global.Paint paint = paint_NG;
 
             Bitmap resultBitmap = new Bitmap(ICam0.Size.Width * 2, ICam0.Size.Height * 2);
             using (var g = Graphics.FromImage(resultBitmap))
@@ -566,77 +598,154 @@ namespace ICOP
                 RectangleF[] rectangleF = new RectangleF[1];
                 for (int i = 0; i < modelSteps.Count; i++)
                 {
-                    if (modelSteps[i].Result == Global.ICOP_tester_NG)
+                    if (modelSteps[i].Result == Global.ICOP_tester_OK)
                     {
-                        switch (modelSteps[i].Position)
-                        {
-                            case Global.Positions.ICam0:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam0);
-                                rectangleF[0].X = rectangleF[0].X;
-                                rectangleF[0].Y = rectangleF[0].Y;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                            case Global.Positions.ICam1:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam1);
-                                rectangleF[0].X = rectangleF[0].X + ICam0.Width;
-                                rectangleF[0].Y = rectangleF[0].Y;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                            case Global.Positions.ICam2:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam2);
-                                rectangleF[0].X = rectangleF[0].X;
-                                rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                            case Global.Positions.ICam3:
-                                rectangleF[0] = modelSteps[i].ForDrawResult(ICam3);
-                                rectangleF[0].X = rectangleF[0].X + ICam0.Width;
-                                rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
-                                g.DrawRectangles(paint_NG.pen, rectangleF);
-                                g.DrawString
-                                            (
-                                            modelSteps[i].Name,
-                                            paint_NG.Font,
-                                            paint_NG.brush,
-                                            rectangleF[0].X,
-                                            rectangleF[0].Y - (paint_NG.Font.Height)
-                                            );
-                                break;
-                        }
+                        paint = paint_OK;
+                    }
+                    else
+                    {
+                        paint = paint_NG;
+                    }
+                    switch (modelSteps[i].Position)
+                    {
+                        case Global.Positions.ICam0:
+                            rectangleF[0] = modelSteps[i].ForDrawResult(ICam0);
+                            rectangleF[0].X = rectangleF[0].X;
+                            rectangleF[0].Y = rectangleF[0].Y;
+                            g.DrawRectangles(paint.pen, rectangleF);
+                            g.DrawString
+                                        (
+                                        modelSteps[i].Name,
+                                        paint.Font,
+                                        paint.brush,
+                                        rectangleF[0].X,
+                                        rectangleF[0].Y - (paint.Font.Height)
+                                        );
+                            break;
+                        case Global.Positions.ICam1:
+                            rectangleF[0] = modelSteps[i].ForDrawResult(ICam1);
+                            rectangleF[0].X = rectangleF[0].X + ICam0.Width;
+                            rectangleF[0].Y = rectangleF[0].Y;
+                            g.DrawRectangles(paint.pen, rectangleF);
+                            g.DrawString
+                                        (
+                                        modelSteps[i].Name,
+                                        paint.Font,
+                                        paint.brush,
+                                        rectangleF[0].X,
+                                        rectangleF[0].Y - (paint.Font.Height)
+                                        );
+                            break;
+                        case Global.Positions.ICam2:
+                            rectangleF[0] = modelSteps[i].ForDrawResult(ICam2);
+                            rectangleF[0].X = rectangleF[0].X;
+                            rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
+                            g.DrawRectangles(paint.pen, rectangleF);
+                            g.DrawString
+                                        (
+                                        modelSteps[i].Name,
+                                        paint.Font,
+                                        paint.brush,
+                                        rectangleF[0].X,
+                                        rectangleF[0].Y - (paint.Font.Height)
+                                        );
+                            break;
+                        case Global.Positions.ICam3:
+                            rectangleF[0] = modelSteps[i].ForDrawResult(ICam3);
+                            rectangleF[0].X = rectangleF[0].X + ICam0.Width;
+                            rectangleF[0].Y = rectangleF[0].Y + ICam0.Height;
+                            g.DrawRectangles(paint.pen, rectangleF);
+                            g.DrawString
+                                        (
+                                        modelSteps[i].Name,
+                                        paint.Font,
+                                        paint.brush,
+                                        rectangleF[0].X,
+                                        rectangleF[0].Y - (paint.Font.Height)
+                                        );
+                            break;
                     }
                 }
             }
-            resultBitmap = (Bitmap)resizeImage(resultBitmap,new Size(1920,1080));
-            resultBitmap.Save(Global.ICOP_history_path + "result.png");
+            //resultBitmap = resizeImage(resultBitmap, new Size(1920, 1080));
+            this.ModelImageResult = Global.ICOP_history_path_image + this.ModelName + "_" + dateTime.ToString("HHmmss") + "_" + this.result + ".png";
+            resultBitmap.Save(ModelImageResult);
         }
 
-        private Image resizeImage(Image imgToResize, Size size)
+        private Bitmap resizeImage(Image imgToResize, Size size)
         {
-            return (Image)(new Bitmap(imgToResize, size));
+            return (new Bitmap(imgToResize, size));
+        }
+
+        public void SaveMESReport(DateTime dateTime, int PCB_count)
+        {
+            for (int i = 0; i < this.PBA_Count; i++)
+            {
+                if (modelSteps[i].Result == Global.ICOP_tester_OK)
+                {
+                    string PCB_report_name = modelSteps[i].Value;
+                    if (modelSteps[i].Result == Global.ICOP_tester_NG)
+                        PCB_report_name += "_" + (i + 1);
+                    string reportContent = (PCB_count + i) + "/" + (i + 1) + "/" + dateTime.ToString() + "/" + Global.MachineLine + "/";
+                    string PCB_result = "Y" + "/" + "OK";
+                    for (int stepCount = 0; stepCount < modelSteps.Count; stepCount++)
+                    {
+                        if (modelSteps[stepCount].Result == Global.ICOP_tester_NG && modelSteps[stepCount].PBA == i)
+                        {
+                            PCB_result = "N" + "/" + "NG";
+                            break;
+                        }
+                    }
+                    File.WriteAllText(Global.ICOP_MES + PCB_report_name + ".txt", reportContent + PCB_result);
+                }
+            }
+        }
+        public void SaveTextReport(DateTime dateTime, User.Account OP)
+        {
+            for (int i = 0; i < this.PBA_Count; i++)
+            {
+                string PCB_report_name = dateTime.ToString("HHmmss") + "_" + modelSteps[i].Value + "_" + (i + 1) + "_" + this.result;
+
+                if (modelSteps[i].Result == Global.ICOP_tester_NG)
+                {
+                    PCB_report_name = dateTime.ToString("HHmmss") + "_" + "No-QR" + "_" + (i + 1) + "_" + this.result;
+                }
+
+                ModelProgram modelReport = new ModelProgram("Report")
+                {
+                    AccCreater = this.AccCreater,
+                    ACCPass = "Machine",
+                    ModelName = this.ModelName,
+                    PCB_Code = this.PCB_Code,
+                    MotherFolder = this.MotherFolder,
+                    ModelImagePathCam0 = this.ModelImagePathCam0,
+                    ModelImagePathCam1 = this.ModelImagePathCam1,
+                    ModelImagePathCam2 = this.ModelImagePathCam2,
+                    ModelImagePathCam3 = this.ModelImagePathCam3,
+                    ModelImageResult = this.ModelImageResult,
+                    PBA_Count = this.PBA_Count,
+                    result = this.result,
+                };
+
+                if (this.result == Global.ICOP_tester_OP_PASS)
+                {
+                    modelReport.ACCPass = OP.userName;
+                }
+
+                for (int stepCount = 0; stepCount < this.modelSteps.Count; stepCount++)
+                {
+                    if (modelSteps[stepCount].PBA == i + 1)
+                    {
+                        modelReport.modelSteps.Add(this.modelSteps[stepCount]);
+                    }
+                }
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                };
+                string ModelJson = JsonSerializer.Serialize(modelReport, options);
+                File.WriteAllText(Global.ICOP_history_path + PCB_report_name + ".ihf", ModelJson);
+            }
         }
         #endregion
 

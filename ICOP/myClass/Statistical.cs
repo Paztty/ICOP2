@@ -13,9 +13,9 @@ namespace ICOP
     class Statistical
     {
         public const string StatisticalFileName = "Statistical.ist";
-        public UInt64 dailyFail { get; set; } = 0;
-        public UInt64 dailyPass { get; set; } = 0;
-        public UInt64 dailyToltal { get; set; } = 0;
+        public int dailyFail { get; set; } = 0;
+        public int dailyPass { get; set; } = 0;
+        public int dailyToltal { get; set; } = 0;
         public double dailyPercentPass { get; set; } = 0.0;
 
         public Statistical()
@@ -44,17 +44,17 @@ namespace ICOP
                 File.WriteAllText(Global.ICOP_Statitic_path + StatisticalFileName, StatisticalJson);
             }
         }
-        public void Statistical_Update( string result, Label CounterFail, Label CounterPass, Label CounterTotal, Label CounterPercent)
+        public void Statistical_Update(int arrayNumber, string result, Label CounterFail, Label CounterPass, Label CounterTotal, Label CounterPercent)
         {
             if (result == Global.ICOP_tester_OK)
             {
-                this.dailyPass++;
+                this.dailyPass = dailyPass + arrayNumber;
             }
             else
             {
-                this.dailyFail++;
+                this.dailyFail = dailyFail + arrayNumber;
             }
-            this.dailyToltal++;
+            this.dailyToltal = this.dailyPass + this.dailyFail;
             if (this.dailyToltal == 0)
                 this.dailyPercentPass = 0.0;
             else
@@ -69,10 +69,8 @@ namespace ICOP
             {
                 WriteIndented = true
             };
-
             string StatisticalJson = JsonSerializer.Serialize(this, options);
-            if (!File.Exists(Global.ICOP_Statitic_path + StatisticalFileName))
-                File.WriteAllText(Global.ICOP_Statitic_path + StatisticalFileName, StatisticalJson);
+            File.WriteAllText(Global.ICOP_Statitic_path + StatisticalFileName, StatisticalJson);
 
         }
         public void Statistical_Init_Counter(Label CounterFail, Label CounterPass, Label CounterTotal, Label CounterPercent)

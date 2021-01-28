@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
             this.panel1 = new System.Windows.Forms.Panel();
@@ -81,26 +82,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pbViewArea = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel15 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveModelDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileModel = new System.Windows.Forms.OpenFileDialog();
             this.openImageModel = new System.Windows.Forms.OpenFileDialog();
             this.saveModelAs = new System.Windows.Forms.SaveFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tsslbVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -323,7 +311,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1401, 669);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1401, 671);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // dgwStepsProgram
@@ -347,7 +335,7 @@
             this.tableLayoutPanel3.SetColumnSpan(this.dgwStepsProgram, 2);
             this.dgwStepsProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwStepsProgram.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgwStepsProgram.Location = new System.Drawing.Point(3, 260);
+            this.dgwStepsProgram.Location = new System.Drawing.Point(3, 261);
             this.dgwStepsProgram.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.dgwStepsProgram.MultiSelect = false;
             this.dgwStepsProgram.Name = "dgwStepsProgram";
@@ -356,7 +344,7 @@
             this.dgwStepsProgram.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgwStepsProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwStepsProgram.ShowEditingIcon = false;
-            this.dgwStepsProgram.Size = new System.Drawing.Size(394, 303);
+            this.dgwStepsProgram.Size = new System.Drawing.Size(394, 304);
             this.dgwStepsProgram.TabIndex = 0;
             this.dgwStepsProgram.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgwStepsProgram_RowsAdded);
             this.dgwStepsProgram.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DgwStepsProgram_RowStateChanged);
@@ -430,7 +418,7 @@
             this.groupBox1.Location = new System.Drawing.Point(403, 3);
             this.groupBox1.Name = "groupBox1";
             this.tableLayoutPanel3.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.Size = new System.Drawing.Size(995, 557);
+            this.groupBox1.Size = new System.Drawing.Size(995, 559);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Camera View";
@@ -454,7 +442,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(989, 537);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(989, 539);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // pbICam3
@@ -463,9 +451,9 @@
             this.pbICam3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbICam3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam3.Location = new System.Drawing.Point(497, 271);
+            this.pbICam3.Location = new System.Drawing.Point(497, 272);
             this.pbICam3.Name = "pbICam3";
-            this.pbICam3.Size = new System.Drawing.Size(489, 263);
+            this.pbICam3.Size = new System.Drawing.Size(489, 264);
             this.pbICam3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam3.TabIndex = 3;
             this.pbICam3.TabStop = false;
@@ -480,9 +468,9 @@
             this.pbICam2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbICam2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam2.Location = new System.Drawing.Point(3, 271);
+            this.pbICam2.Location = new System.Drawing.Point(3, 272);
             this.pbICam2.Name = "pbICam2";
-            this.pbICam2.Size = new System.Drawing.Size(488, 263);
+            this.pbICam2.Size = new System.Drawing.Size(488, 264);
             this.pbICam2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam2.TabIndex = 2;
             this.pbICam2.TabStop = false;
@@ -499,7 +487,7 @@
             this.pbICam1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbICam1.Location = new System.Drawing.Point(497, 3);
             this.pbICam1.Name = "pbICam1";
-            this.pbICam1.Size = new System.Drawing.Size(489, 262);
+            this.pbICam1.Size = new System.Drawing.Size(489, 263);
             this.pbICam1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam1.TabIndex = 1;
             this.pbICam1.TabStop = false;
@@ -516,7 +504,7 @@
             this.pbICam0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbICam0.Location = new System.Drawing.Point(3, 3);
             this.pbICam0.Name = "pbICam0";
-            this.pbICam0.Size = new System.Drawing.Size(488, 262);
+            this.pbICam0.Size = new System.Drawing.Size(488, 263);
             this.pbICam0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam0.TabIndex = 0;
             this.pbICam0.TabStop = false;
@@ -528,8 +516,6 @@
             // panel2
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.panel2, 4);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.btSaveAs);
             this.panel2.Controls.Add(this.cbbPBA);
             this.panel2.Controls.Add(this.label1);
@@ -553,7 +539,7 @@
             this.panel2.Controls.Add(this.btLoadImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.panel2.Location = new System.Drawing.Point(3, 566);
+            this.panel2.Location = new System.Drawing.Point(3, 568);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1395, 100);
             this.panel2.TabIndex = 2;
@@ -573,7 +559,7 @@
             this.btSaveAs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.btSaveAs.Location = new System.Drawing.Point(1288, 0);
             this.btSaveAs.Name = "btSaveAs";
-            this.btSaveAs.Size = new System.Drawing.Size(105, 33);
+            this.btSaveAs.Size = new System.Drawing.Size(105, 30);
             this.btSaveAs.TabIndex = 23;
             this.btSaveAs.Text = "Save As";
             this.btSaveAs.UseVisualStyleBackColor = false;
@@ -589,7 +575,7 @@
             "PBA1",
             "PBA2",
             "PBA3"});
-            this.cbbPBA.Location = new System.Drawing.Point(433, 31);
+            this.cbbPBA.Location = new System.Drawing.Point(433, 33);
             this.cbbPBA.Name = "cbbPBA";
             this.cbbPBA.Size = new System.Drawing.Size(125, 24);
             this.cbbPBA.TabIndex = 22;
@@ -618,9 +604,9 @@
             this.btUserModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btUserModel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btUserModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btUserModel.Location = new System.Drawing.Point(1175, 40);
+            this.btUserModel.Location = new System.Drawing.Point(1175, 33);
             this.btUserModel.Name = "btUserModel";
-            this.btUserModel.Size = new System.Drawing.Size(219, 61);
+            this.btUserModel.Size = new System.Drawing.Size(219, 68);
             this.btUserModel.TabIndex = 19;
             this.btUserModel.Text = "User This Model";
             this.btUserModel.UseVisualStyleBackColor = false;
@@ -641,7 +627,7 @@
             this.btSaveModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.btSaveModel.Location = new System.Drawing.Point(1176, 0);
             this.btSaveModel.Name = "btSaveModel";
-            this.btSaveModel.Size = new System.Drawing.Size(108, 33);
+            this.btSaveModel.Size = new System.Drawing.Size(108, 30);
             this.btSaveModel.TabIndex = 18;
             this.btSaveModel.Text = "Save";
             this.btSaveModel.UseVisualStyleBackColor = false;
@@ -660,7 +646,7 @@
             this.btApplyStep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btApplyStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApplyStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btApplyStep.Location = new System.Drawing.Point(1068, 32);
+            this.btApplyStep.Location = new System.Drawing.Point(1079, 32);
             this.btApplyStep.Name = "btApplyStep";
             this.btApplyStep.Size = new System.Drawing.Size(93, 32);
             this.btApplyStep.TabIndex = 17;
@@ -681,7 +667,7 @@
             this.btClearStep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClearStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClearStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btClearStep.Location = new System.Drawing.Point(1068, 66);
+            this.btClearStep.Location = new System.Drawing.Point(1079, 66);
             this.btClearStep.Name = "btClearStep";
             this.btClearStep.Size = new System.Drawing.Size(93, 33);
             this.btClearStep.TabIndex = 16;
@@ -702,7 +688,7 @@
             this.btAddStep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btAddStep.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAddStep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btAddStep.Location = new System.Drawing.Point(1068, -3);
+            this.btAddStep.Location = new System.Drawing.Point(1079, -3);
             this.btAddStep.Name = "btAddStep";
             this.btAddStep.Size = new System.Drawing.Size(93, 33);
             this.btAddStep.TabIndex = 15;
@@ -713,7 +699,7 @@
             // cbSkip
             // 
             this.cbSkip.AutoSize = true;
-            this.cbSkip.Location = new System.Drawing.Point(965, 34);
+            this.cbSkip.Location = new System.Drawing.Point(865, 33);
             this.cbSkip.Name = "cbSkip";
             this.cbSkip.Size = new System.Drawing.Size(15, 14);
             this.cbSkip.TabIndex = 14;
@@ -725,7 +711,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label8.Location = new System.Drawing.Point(948, 1);
+            this.label8.Location = new System.Drawing.Point(848, 2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 22);
             this.label8.TabIndex = 13;
@@ -734,9 +720,9 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(414, 58);
+            this.label7.Location = new System.Drawing.Point(147, 60);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(648, 37);
+            this.label7.Size = new System.Drawing.Size(920, 37);
             this.label7.TabIndex = 12;
             this.label7.Text = "Descriptions : Function spect descriptions for setting";
             // 
@@ -745,7 +731,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label6.Location = new System.Drawing.Point(826, 2);
+            this.label6.Location = new System.Drawing.Point(740, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 22);
             this.label6.TabIndex = 11;
@@ -754,7 +740,7 @@
             // tbSpect
             // 
             this.tbSpect.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSpect.Location = new System.Drawing.Point(830, 33);
+            this.tbSpect.Location = new System.Drawing.Point(744, 33);
             this.tbSpect.Name = "tbSpect";
             this.tbSpect.Size = new System.Drawing.Size(89, 21);
             this.tbSpect.TabIndex = 10;
@@ -768,7 +754,7 @@
             "Component dettect",
             "Solder dettect",
             "QR code"});
-            this.cbbFunc.Location = new System.Drawing.Point(627, 31);
+            this.cbbFunc.Location = new System.Drawing.Point(588, 33);
             this.cbbFunc.Name = "cbbFunc";
             this.cbbFunc.Size = new System.Drawing.Size(123, 24);
             this.cbbFunc.TabIndex = 9;
@@ -778,7 +764,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label5.Location = new System.Drawing.Point(623, 2);
+            this.label5.Location = new System.Drawing.Point(584, 2);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 22);
             this.label5.TabIndex = 8;
@@ -789,7 +775,7 @@
             this.lbPosition.AutoSize = true;
             this.lbPosition.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.lbPosition.Location = new System.Drawing.Point(337, 34);
+            this.lbPosition.Location = new System.Drawing.Point(337, 33);
             this.lbPosition.Name = "lbPosition";
             this.lbPosition.Size = new System.Drawing.Size(57, 16);
             this.lbPosition.TabIndex = 7;
@@ -822,7 +808,7 @@
             this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbName.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbName.Location = new System.Drawing.Point(150, 30);
+            this.tbName.Location = new System.Drawing.Point(150, 33);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(141, 21);
             this.tbName.TabIndex = 4;
@@ -873,7 +859,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(394, 254);
+            this.panel3.Size = new System.Drawing.Size(394, 255);
             this.panel3.TabIndex = 21;
             // 
             // label4
@@ -883,7 +869,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 254);
+            this.label4.Size = new System.Drawing.Size(17, 255);
             this.label4.TabIndex = 24;
             this.label4.Text = "Preview";
             // 
@@ -896,7 +882,7 @@
             this.pbViewArea.InitialImage = global::ICOP.Properties.Resources.LightLogo;
             this.pbViewArea.Location = new System.Drawing.Point(0, 0);
             this.pbViewArea.Name = "pbViewArea";
-            this.pbViewArea.Size = new System.Drawing.Size(394, 254);
+            this.pbViewArea.Size = new System.Drawing.Size(394, 255);
             this.pbViewArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbViewArea.TabIndex = 20;
             this.pbViewArea.TabStop = false;
@@ -906,133 +892,18 @@
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.toolStripStatusLabel4,
-            this.toolStripStatusLabel5,
-            this.toolStripStatusLabel7,
-            this.toolStripStatusLabel8,
-            this.toolStripStatusLabel15,
-            this.toolStripStatusLabel6,
-            this.toolStripStatusLabel9,
-            this.toolStripStatusLabel10,
-            this.toolStripStatusLabel11,
-            this.toolStripStatusLabel12,
-            this.toolStripStatusLabel13});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 716);
+            this.tsslbVersion,
+            this.toolStripStatusLabel15});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 718);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1401, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1401, 22);
             this.statusStrip1.TabIndex = 2;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(48, 19);
-            this.toolStripStatusLabel1.Text = "IO Com";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.BackColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel2.Text = "  ";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel3.Text = "  ";
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(49, 19);
-            this.toolStripStatusLabel4.Text = "              ";
-            // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(48, 19);
-            this.toolStripStatusLabel5.Text = "Stopper";
-            // 
-            // toolStripStatusLabel7
-            // 
-            this.toolStripStatusLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel7.Text = "  ";
-            // 
-            // toolStripStatusLabel8
-            // 
-            this.toolStripStatusLabel8.BackColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel8.Text = "  ";
             // 
             // toolStripStatusLabel15
             // 
             this.toolStripStatusLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.toolStripStatusLabel15.Name = "toolStripStatusLabel15";
-            this.toolStripStatusLabel15.Size = new System.Drawing.Size(0, 19);
-            // 
-            // toolStripStatusLabel6
-            // 
-            this.toolStripStatusLabel6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(49, 19);
-            this.toolStripStatusLabel6.Text = "              ";
-            // 
-            // toolStripStatusLabel9
-            // 
-            this.toolStripStatusLabel9.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(48, 19);
-            this.toolStripStatusLabel9.Text = "Camera";
-            // 
-            // toolStripStatusLabel10
-            // 
-            this.toolStripStatusLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel10.Text = "  ";
-            // 
-            // toolStripStatusLabel11
-            // 
-            this.toolStripStatusLabel11.BackColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel11.Text = "  ";
-            // 
-            // toolStripStatusLabel12
-            // 
-            this.toolStripStatusLabel12.BackColor = System.Drawing.Color.Blue;
-            this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
-            this.toolStripStatusLabel12.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel12.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel12.Text = "  ";
-            // 
-            // toolStripStatusLabel13
-            // 
-            this.toolStripStatusLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(17, 19);
-            this.toolStripStatusLabel13.Text = "  ";
-            // 
-            // saveModelDialog
-            // 
-            this.saveModelDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveModelDialog_FileOk);
+            this.toolStripStatusLabel15.Size = new System.Drawing.Size(0, 17);
             // 
             // openFileModel
             // 
@@ -1050,31 +921,18 @@
             // 
             this.saveModelAs.FileOk += new System.ComponentModel.CancelEventHandler(this.saveModelAs_FileOk);
             // 
-            // comboBox1
+            // imageList1
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "PBA0",
-            "PBA1",
-            "PBA2",
-            "PBA3"});
-            this.comboBox1.Location = new System.Drawing.Point(199, 68);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 24);
-            this.comboBox1.TabIndex = 25;
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // label9
+            // tsslbVersion
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.label9.Location = new System.Drawing.Point(149, 68);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 22);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "PBA";
+            this.tsslbVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tsslbVersion.Name = "tsslbVersion";
+            this.tsslbVersion.Size = new System.Drawing.Size(170, 17);
+            this.tsslbVersion.Text = "Multi Webcam Detecter (ICOP)";
             // 
             // ModelForm
             // 
@@ -1133,19 +991,6 @@
         private System.Windows.Forms.Label lbModelName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel8;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel9;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel10;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel11;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel12;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel13;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel15;
         private System.Windows.Forms.DataGridView dgwStepsProgram;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1190,8 +1035,8 @@
         private System.Windows.Forms.SaveFileDialog saveModelAs;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslbVersion;
     }
 }
 

@@ -36,7 +36,6 @@ namespace ICOP
             if (index == -1)
                 throw exception;
 
-
         }
         public Camera(int index)
         {

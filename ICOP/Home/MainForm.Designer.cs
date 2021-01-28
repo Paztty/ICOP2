@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btReportManager = new System.Windows.Forms.Button();
+            this.btOpenSetting = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             this.btClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpCamview = new System.Windows.Forms.TableLayoutPanel();
             this.pbICam3 = new System.Windows.Forms.PictureBox();
             this.pbICam2 = new System.Windows.Forms.PictureBox();
             this.pbICam1 = new System.Windows.Forms.PictureBox();
@@ -65,6 +65,9 @@
             this.clResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSkip = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btManualPass = new System.Windows.Forms.Button();
             this.lbCounterPass = new System.Windows.Forms.Label();
             this.lbCounterPercent = new System.Windows.Forms.Label();
             this.lbCounterFail = new System.Windows.Forms.Label();
@@ -83,6 +86,7 @@
             this.btChangeSpect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel14 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -103,13 +107,19 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbSupport = new System.Windows.Forms.Label();
             this.timerUpdateChar = new System.Windows.Forms.Timer(this.components);
+            this.toolStripStatusLabel18 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel19 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel20 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel21 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel22 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel23 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
+            this.tlpCamview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbICam3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbICam2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbICam1)).BeginInit();
@@ -146,8 +156,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.97422F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.97422F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.button5, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btReportManager, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btOpenSetting, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.button3, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
@@ -163,41 +173,43 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1258, 47);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button5
+            // btReportManager
             // 
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.button5.FlatAppearance.BorderSize = 2;
-            this.button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1107, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(144, 41);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Report";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btReportManager.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btReportManager.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btReportManager.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btReportManager.FlatAppearance.BorderSize = 2;
+            this.btReportManager.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btReportManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btReportManager.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btReportManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReportManager.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReportManager.Location = new System.Drawing.Point(1107, 3);
+            this.btReportManager.Name = "btReportManager";
+            this.btReportManager.Size = new System.Drawing.Size(144, 41);
+            this.btReportManager.TabIndex = 5;
+            this.btReportManager.Text = "Report";
+            this.btReportManager.UseVisualStyleBackColor = true;
+            this.btReportManager.Click += new System.EventHandler(this.btReportManager_Click);
             // 
-            // button4
+            // btOpenSetting
             // 
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.button4.FlatAppearance.BorderSize = 2;
-            this.button4.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(957, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(144, 41);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Setting";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btOpenSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btOpenSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btOpenSetting.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btOpenSetting.FlatAppearance.BorderSize = 2;
+            this.btOpenSetting.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btOpenSetting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btOpenSetting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btOpenSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btOpenSetting.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btOpenSetting.Location = new System.Drawing.Point(957, 3);
+            this.btOpenSetting.Name = "btOpenSetting";
+            this.btOpenSetting.Size = new System.Drawing.Size(144, 41);
+            this.btOpenSetting.TabIndex = 4;
+            this.btOpenSetting.Text = "Setting";
+            this.btOpenSetting.UseVisualStyleBackColor = true;
+            this.btOpenSetting.Click += new System.EventHandler(this.btOpenSetting_Click);
             // 
             // button3
             // 
@@ -366,7 +378,7 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 4;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 257F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 2, 0);
@@ -380,54 +392,54 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1579, 731);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1579, 728);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tableLayoutPanel3.SetColumnSpan(this.groupBox1, 2);
-            this.groupBox1.Controls.Add(this.tableLayoutPanel4);
+            this.groupBox1.Controls.Add(this.tlpCamview);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.groupBox1.Location = new System.Drawing.Point(504, 3);
+            this.groupBox1.Location = new System.Drawing.Point(523, 3);
             this.groupBox1.Name = "groupBox1";
             this.tableLayoutPanel3.SetRowSpan(this.groupBox1, 3);
-            this.groupBox1.Size = new System.Drawing.Size(1072, 725);
+            this.groupBox1.Size = new System.Drawing.Size(1053, 722);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Camera View";
             // 
-            // tableLayoutPanel4
+            // tlpCamview
             // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel4.BackgroundImage = global::ICOP.Properties.Resources.LightLogo;
-            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.pbICam3, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.pbICam2, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.pbICam1, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.pbICam0, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 17);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1066, 705);
-            this.tableLayoutPanel4.TabIndex = 0;
+            this.tlpCamview.BackColor = System.Drawing.Color.Transparent;
+            this.tlpCamview.BackgroundImage = global::ICOP.Properties.Resources.LightLogo;
+            this.tlpCamview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tlpCamview.ColumnCount = 2;
+            this.tlpCamview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpCamview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpCamview.Controls.Add(this.pbICam3, 1, 1);
+            this.tlpCamview.Controls.Add(this.pbICam2, 0, 1);
+            this.tlpCamview.Controls.Add(this.pbICam1, 1, 0);
+            this.tlpCamview.Controls.Add(this.pbICam0, 0, 0);
+            this.tlpCamview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpCamview.Location = new System.Drawing.Point(3, 17);
+            this.tlpCamview.Name = "tlpCamview";
+            this.tlpCamview.RowCount = 2;
+            this.tlpCamview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpCamview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpCamview.Size = new System.Drawing.Size(1047, 702);
+            this.tlpCamview.TabIndex = 0;
             // 
             // pbICam3
             // 
             this.pbICam3.BackColor = System.Drawing.Color.Transparent;
             this.pbICam3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam3.Location = new System.Drawing.Point(536, 355);
+            this.pbICam3.Location = new System.Drawing.Point(526, 354);
             this.pbICam3.Name = "pbICam3";
-            this.pbICam3.Size = new System.Drawing.Size(527, 347);
+            this.pbICam3.Size = new System.Drawing.Size(518, 345);
             this.pbICam3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam3.TabIndex = 3;
             this.pbICam3.TabStop = false;
@@ -438,9 +450,9 @@
             this.pbICam2.BackColor = System.Drawing.Color.Transparent;
             this.pbICam2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam2.Location = new System.Drawing.Point(3, 355);
+            this.pbICam2.Location = new System.Drawing.Point(3, 354);
             this.pbICam2.Name = "pbICam2";
-            this.pbICam2.Size = new System.Drawing.Size(527, 347);
+            this.pbICam2.Size = new System.Drawing.Size(517, 345);
             this.pbICam2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam2.TabIndex = 2;
             this.pbICam2.TabStop = false;
@@ -451,9 +463,9 @@
             this.pbICam1.BackColor = System.Drawing.Color.Transparent;
             this.pbICam1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbICam1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbICam1.Location = new System.Drawing.Point(536, 3);
+            this.pbICam1.Location = new System.Drawing.Point(526, 3);
             this.pbICam1.Name = "pbICam1";
-            this.pbICam1.Size = new System.Drawing.Size(527, 346);
+            this.pbICam1.Size = new System.Drawing.Size(518, 345);
             this.pbICam1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam1.TabIndex = 1;
             this.pbICam1.TabStop = false;
@@ -466,7 +478,7 @@
             this.pbICam0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbICam0.Location = new System.Drawing.Point(3, 3);
             this.pbICam0.Name = "pbICam0";
-            this.pbICam0.Size = new System.Drawing.Size(527, 346);
+            this.pbICam0.Size = new System.Drawing.Size(517, 345);
             this.pbICam0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbICam0.TabIndex = 0;
             this.pbICam0.TabStop = false;
@@ -482,7 +494,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(501, 281);
+            this.panel3.Size = new System.Drawing.Size(520, 278);
             this.panel3.TabIndex = 3;
             // 
             // dgwProgram
@@ -491,8 +503,8 @@
             this.dgwProgram.AllowUserToDeleteRows = false;
             this.dgwProgram.AllowUserToResizeColumns = false;
             this.dgwProgram.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgwProgram.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgwProgram.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgwProgram.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgwProgram.BackgroundColor = System.Drawing.Color.White;
             this.dgwProgram.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -509,14 +521,14 @@
             this.clValue,
             this.clResult,
             this.clSkip});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwProgram.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwProgram.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgwProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwProgram.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgwProgram.Location = new System.Drawing.Point(0, 0);
@@ -528,7 +540,7 @@
             this.dgwProgram.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgwProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwProgram.ShowEditingIcon = false;
-            this.dgwProgram.Size = new System.Drawing.Size(501, 281);
+            this.dgwProgram.Size = new System.Drawing.Size(520, 278);
             this.dgwProgram.TabIndex = 0;
             this.dgwProgram.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwProgram_CellClick);
             this.dgwProgram.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DgwStepsProgram_RowStateChanged);
@@ -536,9 +548,9 @@
             // clNo
             // 
             this.clNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(174)))), ((int)(((byte)(190)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(64)))), ((int)(((byte)(103)))));
-            this.clNo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(174)))), ((int)(((byte)(190)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(64)))), ((int)(((byte)(103)))));
+            this.clNo.DefaultCellStyle = dataGridViewCellStyle5;
             this.clNo.FillWeight = 81.21828F;
             this.clNo.Frozen = true;
             this.clNo.HeaderText = "No.";
@@ -620,6 +632,9 @@
             // panel4
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.panel4, 2);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.btManualPass);
             this.panel4.Controls.Add(this.lbCounterPass);
             this.panel4.Controls.Add(this.lbCounterPercent);
             this.panel4.Controls.Add(this.lbCounterFail);
@@ -638,11 +653,54 @@
             this.panel4.Controls.Add(this.btChangeSpect);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 284);
+            this.panel4.Location = new System.Drawing.Point(3, 281);
             this.panel4.Name = "panel4";
             this.tableLayoutPanel3.SetRowSpan(this.panel4, 2);
-            this.panel4.Size = new System.Drawing.Size(495, 444);
+            this.panel4.Size = new System.Drawing.Size(514, 444);
             this.panel4.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.label5.Location = new System.Drawing.Point(298, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(203, 26);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Model";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.label3.Location = new System.Drawing.Point(9, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(203, 26);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Source";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btManualPass
+            // 
+            this.btManualPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(138)))), ((int)(((byte)(45)))));
+            this.btManualPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btManualPass.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
+            this.btManualPass.FlatAppearance.BorderSize = 0;
+            this.btManualPass.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(78)))));
+            this.btManualPass.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(17)))), ((int)(((byte)(26)))));
+            this.btManualPass.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
+            this.btManualPass.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btManualPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.btManualPass.Location = new System.Drawing.Point(260, 252);
+            this.btManualPass.Name = "btManualPass";
+            this.btManualPass.Size = new System.Drawing.Size(174, 63);
+            this.btManualPass.TabIndex = 36;
+            this.btManualPass.Text = "PASS";
+            this.btManualPass.UseVisualStyleBackColor = false;
+            this.btManualPass.Click += new System.EventHandler(this.btManualPass_Click);
             // 
             // lbCounterPass
             // 
@@ -651,7 +709,7 @@
             this.lbCounterPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
             this.lbCounterPass.Location = new System.Drawing.Point(242, 321);
             this.lbCounterPass.Name = "lbCounterPass";
-            this.lbCounterPass.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterPass.Size = new System.Drawing.Size(103, 26);
             this.lbCounterPass.TabIndex = 35;
             this.lbCounterPass.Text = "0";
             this.lbCounterPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -663,7 +721,7 @@
             this.lbCounterPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.lbCounterPercent.Location = new System.Drawing.Point(242, 411);
             this.lbCounterPercent.Name = "lbCounterPercent";
-            this.lbCounterPercent.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterPercent.Size = new System.Drawing.Size(103, 26);
             this.lbCounterPercent.TabIndex = 34;
             this.lbCounterPercent.Text = "0 %";
             this.lbCounterPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -675,7 +733,7 @@
             this.lbCounterFail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbCounterFail.Location = new System.Drawing.Point(242, 351);
             this.lbCounterFail.Name = "lbCounterFail";
-            this.lbCounterFail.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterFail.Size = new System.Drawing.Size(103, 26);
             this.lbCounterFail.TabIndex = 33;
             this.lbCounterFail.Text = "0";
             this.lbCounterFail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -687,7 +745,7 @@
             this.lbCounterTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
             this.lbCounterTotal.Location = new System.Drawing.Point(242, 381);
             this.lbCounterTotal.Name = "lbCounterTotal";
-            this.lbCounterTotal.Size = new System.Drawing.Size(87, 26);
+            this.lbCounterTotal.Size = new System.Drawing.Size(103, 26);
             this.lbCounterTotal.TabIndex = 32;
             this.lbCounterTotal.Text = "0";
             this.lbCounterTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -746,7 +804,7 @@
             this.pbChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbChart.Location = new System.Drawing.Point(3, 321);
             this.pbChart.Name = "pbChart";
-            this.pbChart.Size = new System.Drawing.Size(148, 121);
+            this.pbChart.Size = new System.Drawing.Size(139, 121);
             this.pbChart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbChart.TabIndex = 24;
             this.pbChart.TabStop = false;
@@ -762,7 +820,7 @@
             this.btCallSupport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btCallSupport.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCallSupport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btCallSupport.Location = new System.Drawing.Point(424, 255);
+            this.btCallSupport.Location = new System.Drawing.Point(440, 252);
             this.btCallSupport.Name = "btCallSupport";
             this.btCallSupport.Size = new System.Drawing.Size(68, 63);
             this.btCallSupport.TabIndex = 23;
@@ -800,7 +858,7 @@
             this.btAddReference.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btAddReference.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAddReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btAddReference.Location = new System.Drawing.Point(0, 255);
+            this.btAddReference.Location = new System.Drawing.Point(0, 252);
             this.btAddReference.Name = "btAddReference";
             this.btAddReference.Size = new System.Drawing.Size(142, 31);
             this.btAddReference.TabIndex = 22;
@@ -811,9 +869,10 @@
             // lbResult
             // 
             this.lbResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lbResult.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbResult.Font = new System.Drawing.Font("Microsoft YaHei UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbResult.Location = new System.Drawing.Point(335, 321);
+            this.lbResult.Location = new System.Drawing.Point(351, 321);
             this.lbResult.Name = "lbResult";
             this.lbResult.Size = new System.Drawing.Size(157, 116);
             this.lbResult.TabIndex = 0;
@@ -835,9 +894,9 @@
             // 
             this.pbGetImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbGetImage.BackgroundImage")));
             this.pbGetImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbGetImage.Location = new System.Drawing.Point(267, 2);
+            this.pbGetImage.Location = new System.Drawing.Point(286, 3);
             this.pbGetImage.Name = "pbGetImage";
-            this.pbGetImage.Size = new System.Drawing.Size(225, 214);
+            this.pbGetImage.Size = new System.Drawing.Size(222, 214);
             this.pbGetImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbGetImage.TabIndex = 2;
             this.pbGetImage.TabStop = false;
@@ -853,7 +912,7 @@
             this.btChangeSpect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(34)))), ((int)(((byte)(62)))));
             this.btChangeSpect.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btChangeSpect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.btChangeSpect.Location = new System.Drawing.Point(140, 255);
+            this.btChangeSpect.Location = new System.Drawing.Point(140, 252);
             this.btChangeSpect.Name = "btChangeSpect";
             this.btChangeSpect.Size = new System.Drawing.Size(114, 31);
             this.btChangeSpect.TabIndex = 18;
@@ -864,7 +923,7 @@
             // label1
             // 
             this.label1.Image = global::ICOP.Properties.Resources.compare;
-            this.label1.Location = new System.Drawing.Point(224, 3);
+            this.label1.Location = new System.Drawing.Point(234, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 213);
             this.label1.TabIndex = 1;
@@ -873,9 +932,16 @@
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel14,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
+            this.toolStripStatusLabel21,
+            this.toolStripStatusLabel18,
+            this.toolStripStatusLabel19,
+            this.toolStripStatusLabel20,
+            this.toolStripStatusLabel22,
+            this.toolStripStatusLabel23,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel7,
@@ -889,128 +955,143 @@
             this.toolStripStatusLabel13,
             this.toolStripStatusLabel16,
             this.toolStripStatusLabel17});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 778);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 775);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1579, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1579, 27);
             this.statusStrip1.TabIndex = 2;
+            // 
+            // toolStripStatusLabel14
+            // 
+            this.toolStripStatusLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.toolStripStatusLabel14.Name = "toolStripStatusLabel14";
+            this.toolStripStatusLabel14.Size = new System.Drawing.Size(188, 22);
+            this.toolStripStatusLabel14.Text = "Multi Webcam Detecter (ICOP)      ";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(48, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(48, 22);
             this.toolStripStatusLabel1.Text = "IO Com";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.BackColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel2.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel2.Text = "  ";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel3.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel3.Text = "  ";
             // 
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(49, 19);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(49, 22);
             this.toolStripStatusLabel4.Text = "              ";
             // 
             // toolStripStatusLabel5
             // 
             this.toolStripStatusLabel5.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(48, 19);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(48, 22);
             this.toolStripStatusLabel5.Text = "Stopper";
             // 
             // toolStripStatusLabel7
             // 
             this.toolStripStatusLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.toolStripStatusLabel7.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel7.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel7.Text = "  ";
             // 
             // toolStripStatusLabel8
             // 
             this.toolStripStatusLabel8.BackColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel8.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel8.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel8.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel8.Text = "  ";
             // 
             // toolStripStatusLabel15
             // 
             this.toolStripStatusLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.toolStripStatusLabel15.Name = "toolStripStatusLabel15";
-            this.toolStripStatusLabel15.Size = new System.Drawing.Size(0, 19);
+            this.toolStripStatusLabel15.Size = new System.Drawing.Size(0, 22);
             // 
             // toolStripStatusLabel6
             // 
             this.toolStripStatusLabel6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(49, 19);
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(49, 22);
             this.toolStripStatusLabel6.Text = "              ";
             // 
             // toolStripStatusLabel9
             // 
             this.toolStripStatusLabel9.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(48, 19);
+            this.toolStripStatusLabel9.Size = new System.Drawing.Size(48, 22);
             this.toolStripStatusLabel9.Text = "Camera";
             // 
             // toolStripStatusLabel10
             // 
             this.toolStripStatusLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.toolStripStatusLabel10.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel10.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel10.Text = "  ";
             // 
             // toolStripStatusLabel11
             // 
             this.toolStripStatusLabel11.BackColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel11.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel11.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel11.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel11.Text = "  ";
             // 
             // toolStripStatusLabel12
             // 
             this.toolStripStatusLabel12.BackColor = System.Drawing.Color.Blue;
+            this.toolStripStatusLabel12.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
-            this.toolStripStatusLabel12.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel12.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel12.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel12.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel12.Text = "  ";
             // 
             // toolStripStatusLabel13
             // 
             this.toolStripStatusLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.toolStripStatusLabel13.Margin = new System.Windows.Forms.Padding(3);
             this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(17, 19);
+            this.toolStripStatusLabel13.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel13.Size = new System.Drawing.Size(19, 21);
             this.toolStripStatusLabel13.Text = "  ";
             // 
             // toolStripStatusLabel16
             // 
             this.toolStripStatusLabel16.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel16.Name = "toolStripStatusLabel16";
-            this.toolStripStatusLabel16.Size = new System.Drawing.Size(49, 19);
+            this.toolStripStatusLabel16.Size = new System.Drawing.Size(49, 22);
             this.toolStripStatusLabel16.Text = "              ";
             // 
             // toolStripStatusLabel17
             // 
             this.toolStripStatusLabel17.ForeColor = System.Drawing.Color.White;
             this.toolStripStatusLabel17.Name = "toolStripStatusLabel17";
-            this.toolStripStatusLabel17.Size = new System.Drawing.Size(56, 19);
+            this.toolStripStatusLabel17.Size = new System.Drawing.Size(56, 22);
             this.toolStripStatusLabel17.Text = "Program ";
             // 
             // progressBar1
@@ -1018,7 +1099,7 @@
             this.progressBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.progressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(52)))), ((int)(((byte)(93)))));
-            this.progressBar1.Location = new System.Drawing.Point(511, 786);
+            this.progressBar1.Location = new System.Drawing.Point(938, 783);
             this.progressBar1.MarqueeAnimationSpeed = 10;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(175, 10);
@@ -1050,6 +1131,56 @@
             this.timerUpdateChar.Interval = 10;
             this.timerUpdateChar.Tick += new System.EventHandler(this.timerUpdateChar_Tick);
             // 
+            // toolStripStatusLabel18
+            // 
+            this.toolStripStatusLabel18.ForeColor = System.Drawing.Color.White;
+            this.toolStripStatusLabel18.Name = "toolStripStatusLabel18";
+            this.toolStripStatusLabel18.Size = new System.Drawing.Size(48, 22);
+            this.toolStripStatusLabel18.Text = "Stopper";
+            // 
+            // toolStripStatusLabel19
+            // 
+            this.toolStripStatusLabel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.toolStripStatusLabel19.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel19.Name = "toolStripStatusLabel19";
+            this.toolStripStatusLabel19.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel19.Size = new System.Drawing.Size(19, 21);
+            this.toolStripStatusLabel19.Text = "  ";
+            // 
+            // toolStripStatusLabel20
+            // 
+            this.toolStripStatusLabel20.BackColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel20.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel20.Name = "toolStripStatusLabel20";
+            this.toolStripStatusLabel20.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel20.Size = new System.Drawing.Size(19, 21);
+            this.toolStripStatusLabel20.Text = "  ";
+            // 
+            // toolStripStatusLabel21
+            // 
+            this.toolStripStatusLabel21.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripStatusLabel21.Name = "toolStripStatusLabel21";
+            this.toolStripStatusLabel21.Size = new System.Drawing.Size(49, 22);
+            this.toolStripStatusLabel21.Text = "              ";
+            // 
+            // toolStripStatusLabel22
+            // 
+            this.toolStripStatusLabel22.BackColor = System.Drawing.Color.SpringGreen;
+            this.toolStripStatusLabel22.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel22.Name = "toolStripStatusLabel22";
+            this.toolStripStatusLabel22.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel22.Size = new System.Drawing.Size(19, 21);
+            this.toolStripStatusLabel22.Text = "  ";
+            // 
+            // toolStripStatusLabel23
+            // 
+            this.toolStripStatusLabel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.toolStripStatusLabel23.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel23.Name = "toolStripStatusLabel23";
+            this.toolStripStatusLabel23.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStripStatusLabel23.Size = new System.Drawing.Size(19, 21);
+            this.toolStripStatusLabel23.Text = "  ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1080,7 +1211,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tlpCamview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbICam3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbICam2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbICam1)).EndInit();
@@ -1107,8 +1238,8 @@
         private System.Windows.Forms.Button btMax;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btReportManager;
+        private System.Windows.Forms.Button btOpenSetting;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -1134,7 +1265,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridView dgwProgram;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tlpCamview;
         private System.Windows.Forms.PictureBox pbICam3;
         private System.Windows.Forms.PictureBox pbICam2;
         private System.Windows.Forms.PictureBox pbICam1;
@@ -1170,6 +1301,16 @@
         private System.Windows.Forms.Label lbCounterTotal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timerUpdateChar;
+        private System.Windows.Forms.Button btManualPass;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel14;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel21;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel18;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel19;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel20;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel22;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel23;
     }
 }
 

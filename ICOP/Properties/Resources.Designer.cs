@@ -63,6 +63,16 @@ namespace ICOP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _13239071 {
+            get {
+                object obj = ResourceManager.GetObject("13239071", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonBackgroud1 {
             get {
                 object obj = ResourceManager.GetObject("buttonBackgroud1", resourceCulture);
@@ -83,6 +93,26 @@ namespace ICOP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CylinderOFF {
+            get {
+                object obj = ResourceManager.GetObject("CylinderOFF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CylinderOn {
+            get {
+                object obj = ResourceManager.GetObject("CylinderOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DrakLogo {
             get {
                 object obj = ResourceManager.GetObject("DrakLogo", resourceCulture);
@@ -96,6 +126,36 @@ namespace ICOP.Properties {
         internal static System.Drawing.Bitmap DrakLogoTr {
             get {
                 object obj = ResourceManager.GetObject("DrakLogoTr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LED_GREEN {
+            get {
+                object obj = ResourceManager.GetObject("LED_GREEN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LED_RED {
+            get {
+                object obj = ResourceManager.GetObject("LED_RED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LED_YELLOW {
+            get {
+                object obj = ResourceManager.GetObject("LED_YELLOW", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +186,26 @@ namespace ICOP.Properties {
         internal static System.Drawing.Bitmap maximizeIcon {
             get {
                 object obj = ResourceManager.GetObject("maximizeIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SensorOFF {
+            get {
+                object obj = ResourceManager.GetObject("SensorOFF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SensorON {
+            get {
+                object obj = ResourceManager.GetObject("SensorON", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

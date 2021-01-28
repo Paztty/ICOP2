@@ -7,8 +7,7 @@ namespace ICOP
 {
     public class Setting
     {
-        public const string Path = @"D:\DEV_PJT\ICOPv2\setting.icop";
-
+        public const string Path = Global.ICOP_setting + "setting.Json";
         public class cameraSetting
         {
             public string cameraID { get; set; } = "";
@@ -39,6 +38,7 @@ namespace ICOP
             }
         }
 
+        public IO_Port IO_Port { get; set; } = new IO_Port();
         public List<cameraSetting> camerasSetting { get; set; } = new List<cameraSetting>(4);
         public Setting()
         {

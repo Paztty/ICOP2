@@ -80,10 +80,29 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Home\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myClass\IO_Port.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ModelWizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\ModelWizar.Designer.cs">
+      <DependentUpon>ModelWizar.cs</DependentUpon>
+    </Compile>
     <Compile Include="myClass\Camera.cs" />
     <Compile Include="myClass\DetectArea.cs" />
     <Compile Include="Home\ModelForm.cs">
@@ -92,10 +111,10 @@
     <Compile Include="Home\ModelForm.Designer.cs">
       <DependentUpon>ModelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home\StartingForm.cs">
+    <Compile Include="Utility\StartingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home\StartingForm.Designer.cs">
+    <Compile Include="Utility\StartingForm.Designer.cs">
       <DependentUpon>StartingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Home\MainForm.cs">
@@ -112,30 +131,36 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="myClass\Report.cs" />
     <Compile Include="myClass\Setting.cs" />
-    <Compile Include="Setting\ICOPlogin.cs">
+    <Compile Include="Utility\ICOPlogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting\ICOPlogin.Designer.cs">
+    <Compile Include="Utility\ICOPlogin.Designer.cs">
       <DependentUpon>ICOPlogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting\ICOPconfirm.cs">
+    <Compile Include="Utility\ICOPconfirm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting\ICOPconfirm.Designer.cs">
+    <Compile Include="Utility\ICOPconfirm.Designer.cs">
       <DependentUpon>ICOPconfirm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting\IcopMessenger.cs">
+    <Compile Include="Utility\IcopMessenger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting\IcopMessenger.Designer.cs">
+    <Compile Include="Utility\IcopMessenger.Designer.cs">
       <DependentUpon>IcopMessenger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting\MainSetting.cs">
+    <Compile Include="Home\MainSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting\MainSetting.Designer.cs">
+    <Compile Include="Home\MainSetting.Designer.cs">
       <DependentUpon>MainSetting.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Home\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\ModelWizar.resx">
+      <DependentUpon>ModelWizar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -143,29 +168,24 @@
     <EmbeddedResource Include="Home\ModelForm.resx">
       <DependentUpon>ModelForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home\StartingForm.resx">
+    <EmbeddedResource Include="Utility\StartingForm.resx">
       <DependentUpon>StartingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Setting\ICOPlogin.resx">
+    <EmbeddedResource Include="Utility\ICOPlogin.resx">
       <DependentUpon>ICOPlogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setting\ICOPconfirm.resx">
+    <EmbeddedResource Include="Utility\ICOPconfirm.resx">
       <DependentUpon>ICOPconfirm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setting\IcopMessenger.resx">
+    <EmbeddedResource Include="Utility\IcopMessenger.resx">
       <DependentUpon>IcopMessenger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setting\MainSetting.resx">
+    <EmbeddedResource Include="Home\MainSetting.resx">
       <DependentUpon>MainSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -190,12 +210,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DrakLogo.ico" />
+    <None Include="Resources\CylinderON.bmp" />
     <None Include="im\DrakLogoTr.png" />
     <None Include="im\LogoHeader.png" />
     <None Include="im\maximizeIcon.png" />
     <None Include="im\buttonBackgroud1.png" />
     <None Include="im\Start.png" />
     <None Include="im\compare.png" />
+    <None Include="im\13239071.jpg" />
+    <None Include="im\CylinderOFF.png" />
+    <None Include="im\CylinderOn.png" />
+    <None Include="im\SensorOFF.png" />
+    <None Include="im\SensorON.png" />
+    <None Include="im\LED_GREEN.png" />
+    <None Include="im\LED_RED.png" />
+    <None Include="im\LED_YELLOW.png" />
     <Content Include="LightLogo.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +288,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.Composition.Registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

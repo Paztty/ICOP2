@@ -7,27 +7,15 @@
       "InUsing": false
     },
     {
-      "userName": "admin1",
+      "userName": "technical",
       "passWord": "1",
-      "Permission": 2,
+      "Permission": 1,
       "InUsing": false
     },
     {
-      "userName": "admin2",
+      "userName": "op",
       "passWord": "1",
-      "Permission": 2,
-      "InUsing": false
-    },
-    {
-      "userName": "admin3",
-      "passWord": "1",
-      "Permission": 2,
-      "InUsing": false
-    },
-    {
-      "userName": "admin4",
-      "passWord": "1",
-      "Permission": 2,
+      "Permission": 0,
       "InUsing": false
     }
   ]
